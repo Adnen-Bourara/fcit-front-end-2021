@@ -1,0 +1,96 @@
+<div class="col-md-12  " style="width:950px; height: 450px" >
+    <form class="form-group">
+      <nb-card>
+      <nb-card-body>
+            
+        <div   class="row full-name-inputs label nvForm">
+            <div class="input-group col-md-3   input-group-lg">
+              <label for="ingenieurnom">Nom ingenieur</label>
+            </div>
+            <div    class="input-group col-md-6   input-group-sm">
+              <input  type="text" class="form-control" nbInput disabled [(ngModel)]="ingenieur.nom"  placeholder="Nom ingenieur"   name="ingenieurnom"  />
+            </div>
+           </div> 
+    
+           <div   class="row full-name-inputs label nvForm">
+            <div class="input-group col-md-3   input-group-lg">
+              <label for="ingenieurprenom">Prenom ingenieur</label>
+            </div>
+            <div    class="input-group col-md-6   input-group-sm">
+              <input  type="text" class="form-control" nbInput disabled [(ngModel)]="ingenieur.prenom"  placeholder="Prenom ingenieur"   name="ingenieurprenom"  />
+            </div>
+           </div> 
+  
+    
+    
+           <div   class="row full-name-inputs label nvForm">
+            <div class="input-group col-md-3   input-group-lg">
+              <label for="CVformateur">CV formateur</label>
+            </div>
+            <div    class="input-group col-md-6   input-group-sm">
+                <textarea class="form-control" type="text" class="form-control" nbInput disabled [(ngModel)]="ingenieur.cv"  placeholder="CV ingenieur"   name="CVformateur" ></textarea>
+            </div>
+           </div> 
+    
+           <div   class="row full-name-inputs label nvForm">
+            <div class="input-group col-md-3   input-group-lg">
+              <label for="emailformateur">Email formateur</label>
+            </div>
+            <div    class="input-group col-md-6   input-group-sm">
+              <input  type="text" class="form-control" nbInput  [(ngModel)]="ingenieur.email" disabled placeholder="Email ingenieur"   name="emailformateur"  />
+            </div>
+           </div> 
+    
+           <div   class="row full-name-inputs label nvForm">
+            <div class="input-group col-md-3   input-group-lg">
+              <label for="telformateur">Tel formateur</label>
+            </div>
+            <div    class="input-group col-md-6   input-group-sm">
+              <input  type="text" class="form-control" nbInput  [(ngModel)]="ingenieur.tel" disabled placeholder="Tel ingenieur"   name="telformateur"  />
+            </div>
+           </div> 
+    
+           <div   class="row full-name-inputs label nvForm">
+            <div class="input-group col-md-3   input-group-lg">
+              <label for="nssformateur">Nss formateur</label>
+            </div>
+            <div    class="input-group col-md-6   input-group-sm">
+              <input  type="number" class="form-control" nbInput  [(ngModel)]="ingenieur.nss" disabled  placeholder="Nss ingenieur"   name="nssformateur"  />
+            </div>
+           </div> 
+  
+           <div   class="row full-name-inputs label nvForm">
+              <div class="input-group col-md-3   input-group-lg">
+                <label for="specialiteformateur">specialite formateur</label>
+              </div>
+              <div    class="input-group col-md-6   input-group-sm">
+                <input  type="text" class="form-control" nbInput  [(ngModel)]="ingenieur.specialite" disabled placeholder="specialite ingenieur"   name="specialiteformateur"  />
+              </div>
+             </div> 
+    
+           <div   class="row full-name-inputs label nvForm">
+            <div class="input-group col-md-3   input-group-lg">
+              <label for="salaireformateur">Salaire formateur</label>
+            </div>
+            <div    class="input-group col-md-6   input-group-sm">
+              <input  type="number" class="form-control" nbInput  [(ngModel)]="ingenieur.salaire" disabled  placeholder="Salaire ingenieur"   name="salaireformateur"  />
+            </div>
+           </div> 
+    
+           <div   class="row full-name-inputs label nvForm">
+            <div class="input-group col-md-3   input-group-lg">
+              <label for="adrformateur">Adresse formateur</label>
+            </div>
+            <div    class="input-group col-md-6   input-group-sm">
+              <input  type="text" class="form-control" nbInput  [(ngModel)]="ingenieur.adr" disabled placeholder="Adresse ingenieur"   name="adrformateur"  />
+            </div>
+           </div> 
+    
+    
+      </nb-card-body>
+      </nb-card>
+      <div style="text-align:right;">
+        <button nbButton status="warning" (click)="fermer();" style="margin-left: 30px;margin-bottom: 12px;">Return</button>
+      </div>
+    </form>
+      </div>

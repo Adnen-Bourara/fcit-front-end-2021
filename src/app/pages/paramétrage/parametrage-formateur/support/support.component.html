@@ -1,0 +1,14 @@
+<nb-card>
+    <nb-card-header  class="text-center" >
+    Supports de cours
+    </nb-card-header>
+  
+    <nb-card-body>
+      <ng2-smart-table [settings]="settings" [source]="source"  
+      (edit)="modif($event)"
+      (create)="create($event)"
+      (delete)="onDeleteConfirm($event)">
+      </ng2-smart-table>
+    </nb-card-body>
+  </nb-card>
+  

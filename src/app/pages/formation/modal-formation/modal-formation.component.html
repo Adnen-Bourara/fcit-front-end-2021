@@ -1,0 +1,270 @@
+<div class="col-md-12  " style="width:950px; height: 450px" >
+    <form class="form-group" (ngSubmit)="onAddFormation()"  #form="ngForm"  #monFormulairej = ngForm autocomplete="off"    >
+  <nb-card>
+  <nb-card-body>
+        
+    <div   class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-lg">
+          <label for="codeFormation">Code Formation</label>
+        </div>
+        <div    class="input-group col-md-6   input-group-sm">
+          <input  type="text" class="form-control" nbInput  [(ngModel)]="formation.codeFormation" required placeholder="Code Formation" #codeFormation="ngModel" pattern="^[a-zA-Z0-9_-]{3,60}$" maxlength="60"  name="codeFormation"  />
+        </div>
+        <ng-container *ngIf="codeFormation.invalid && codeFormation.touched">
+          <p style="top: 7px; position: relative;"  class="caption status-danger" *ngIf="codeFormation.errors?.required">
+            Vous devez indiquer le code
+          </p>
+          <p style="top: 7px; position: relative;"  class="caption status-danger" *ngIf="codeFormation.errors?.pattern">
+            Le code n'est pas valide
+          </p>
+        </ng-container>
+        <ng-container *ngIf="!codeFormation.invalid && codeFormation.touched">
+          <p style="top: 7px; position: relative;" class="caption status-success" *ngIf="!codeFormation.errors?.pattern" >
+            ✔
+          </p>
+        </ng-container>
+       </div> 
+
+       <div   class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-lg">
+          <label for="alaune">A la une</label>
+        </div>
+        <nb-checkbox status="success" [value]=true name="alaune" [(ngModel)]="formation.alaUne" style=" transform : scale(1.5); margin-left:18px; "></nb-checkbox>
+       </div> 
+
+    <div   class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-lg">
+          <label for="intituleFormation">Intitulé Formation</label>
+        </div>
+        <div    class="input-group col-md-6   input-group-sm">
+          <input  type="text" class="form-control" nbInput required  [(ngModel)]="formation.intituleFormation"  placeholder="Intitulé Formation"   name="intituleFormation" #intituleFormation="ngModel" maxlength="60" pattern="^[a-zA-Z0-9 _-]{3,60}$"/>
+        </div>
+        <ng-container *ngIf="intituleFormation.invalid && intituleFormation.touched">
+          <p style="top: 7px; position: relative;"  class="caption status-danger" *ngIf="intituleFormation.errors?.required">
+            Vous devez indiquer l'intitulé
+          </p>
+          <p style="top: 7px; position: relative;"  class="caption status-danger" *ngIf="intituleFormation.errors?.pattern">
+            l'intitulé n'est pas valide
+          </p>
+        </ng-container>
+        <ng-container *ngIf="!intituleFormation.invalid && intituleFormation.touched">
+          <p style="top: 7px; position: relative;" class="caption status-success" *ngIf="!intituleFormation.errors?.pattern" >
+            ✔
+          </p>
+        </ng-container>
+    </div> 
+
+
+    <div   class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-lg">
+          <label for="dureeFormation">Durée Formation</label>
+        </div>
+        <div    class="input-group col-md-6   input-group-sm">
+          <input  type="number" class="form-control" nbInput min="0" max="100" [(ngModel)]="formation.dureeFormation"  placeholder="Durée Formation"   name="dureeFormation" #dureeFormation="ngModel" pattern="[0-9]{0,3}"/>
+        </div>
+        <ng-container *ngIf="dureeFormation.invalid && dureeFormation.touched">
+          <p style="top: 7px; position: relative;"  class="caption status-danger" *ngIf="dureeFormation.errors?.required">
+            Vous devez indiquer la durée
+          </p>
+          <p style="top: 7px; position: relative;"  class="caption status-danger" *ngIf="dureeFormation.errors?.pattern">
+            La durée n'est pas valide
+          </p>
+        </ng-container>
+        <ng-container *ngIf="!dureeFormation.invalid && dureeFormation.touched">
+          <p style="top: 7px; position: relative;" class="caption status-success" *ngIf="!dureeFormation.errors?.pattern" >
+            ✔
+          </p>
+        </ng-container>
+    </div> 
+
+    <div   class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-lg">
+          <label for="nbreMinPart">Nombre minimal participant</label>
+        </div>
+        <div    class="input-group col-md-6   input-group-sm">
+          <input  type="number" class="form-control" nbInput  [(ngModel)]="formation.nbreMinPart"  min="0" max="99" placeholder="Nombre minimal participant"   name="nbreMinPart" #nbreMinPart="ngModel" pattern="[0-9]{0,3}"/>
+        </div>
+        <ng-container *ngIf="nbreMinPart.invalid && nbreMinPart.touched">
+          <p style="top: 7px; position: relative;"  class="caption status-danger" *ngIf="nbreMinPart.errors?.required">
+            Vous devez indiquer le nombre minimal
+          </p>
+          <p style="top: 7px; position: relative;"  class="caption status-danger" *ngIf="nbreMinPart.errors?.pattern">
+            le nombre minimal n'est pas valide
+          </p>
+        </ng-container>
+        <ng-container *ngIf="!nbreMinPart.invalid && nbreMinPart.touched">
+          <p style="top: 7px; position: relative;" class="caption status-success" *ngIf="!nbreMinPart.errors?.pattern" >
+            ✔
+          </p>
+        </ng-container>
+        
+    </div> 
+
+    <div   class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-lg">
+          <label for="nbreMaxPart">Nombre maximal participant</label>
+        </div>
+        <div    class="input-group col-md-6   input-group-sm">
+          <input  type="number" class="form-control" nbInput min="0" max="99" [(ngModel)]="formation.nbreMaxPart"  placeholder="Nombre minimal participant"   name="nbreMaxPart" #nbreMaxPart="ngModel" pattern="[0-9]{0,3}"/>
+        </div>
+        <ng-container *ngIf="nbreMaxPart.invalid && nbreMaxPart.touched">
+          <p style="top: 7px; position: relative;"  class="caption status-danger" *ngIf="nbreMaxPart.errors?.required">
+            Vous devez indiquer le nombre maximal
+          </p>
+          <p style="top: 7px; position: relative;"  class="caption status-danger" *ngIf="nbreMaxPart.errors?.pattern">
+            le nombre maximal n'est pas valide
+          </p>
+        </ng-container>
+        <ng-container *ngIf="!nbreMaxPart.invalid && nbreMaxPart.touched">
+          <p style="top: 7px; position: relative;" class="caption status-success" *ngIf="!nbreMaxPart.errors?.pattern" >
+            ✔
+          </p>
+        </ng-container>
+    </div> 
+
+
+
+
+    <div   class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-lg">
+          <label for="CategorieFormation">Categorie</label>
+        </div>
+        <div    class="input-group col-md-6   input-group-sm">
+          <ng-select required placeholder="Categorie"   name="CategorieFormation" [(ngModel)]="formation.categorieFormation">
+            <ng-option [value]="'Best'" style="color:rgb(243, 192, 26)">Best</ng-option>
+            <ng-option [value]="'New'" style="color:red">New</ng-option>
+            <ng-option [value]="' '">None</ng-option>
+        </ng-select>
+        </div>
+    </div> 
+
+
+    <div   class="row full-name-inputs label nvForm">
+      <div class="input-group col-md-3   input-group-lg">
+        <label for="typeFormation">Type formation</label>
+      </div>
+      <div    class="input-group col-md-6   input-group-sm">
+        <ng-select  placeholder="type formation"   name="typeFormation" [(ngModel)]="formation.typeFormation">
+          <ng-option [value]="'Sythese'" >Sythése</ng-option>
+          <ng-option [value]="'Seminaire'">Séminaire</ng-option>
+          <ng-option [value]="'Stage pratique'">Stage pratique</ng-option>
+      </ng-select>
+      </div>
+  </div> 
+
+   
+
+
+    <div   class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-lg">
+          <label for="prixFormation">Prix</label>
+        </div>
+        <div    class="input-group col-md-6   input-group-sm">
+          <input  type="text" class="form-control" nbInput  [(ngModel)]="formation.prixFormation"  placeholder="Prix"   name="prixFormation"  #prixFormation="ngModel" pattern="[0-9]*[,.]?[0-9]+"/>
+        </div>
+        <ng-container *ngIf="prixFormation.invalid && prixFormation.touched">
+          <p style="top: 7px; position: relative;"  class="caption status-danger" *ngIf="prixFormation.errors?.required">
+            Vous devez indiquer le Prix
+          </p>
+          <p style="top: 7px; position: relative;"  class="caption status-danger" *ngIf="prixFormation.errors?.pattern">
+            le prix maximal n'est pas valide
+          </p>
+        </ng-container>
+        <ng-container *ngIf="!prixFormation.invalid && prixFormation.touched">
+          <p style="top: 7px; position: relative;" class="caption status-success" *ngIf="!prixFormation.errors?.pattern" >
+            ✔
+          </p>
+        </ng-container>
+    </div> 
+
+    <div   class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-lg">
+          <label for="Cible">Cible</label>
+        </div>
+        <div    class="input-group col-md-6   input-group-sm">
+          <input  type="text" class="form-control" nbInput  [(ngModel)]="formation.cible"  placeholder="Cible"   name="Cible" />
+        </div>
+    </div> 
+
+
+    <div   class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-lg">
+          <label for="prerequis">Prerequis</label>
+        </div>
+        <div    class="input-group col-md-6   input-group-sm">
+          <input  type="text" class="form-control" nbInput  [(ngModel)]="formation.prerequis"   placeholder="prerequis"   name="prerequis"/>
+        </div>
+    </div>
+      
+    <div   class="row full-name-inputs">
+      <div class="input-group col-md-3   input-group-lg">
+        <label class="label" for="catalogueFormation">Catalogue</label>
+      </div>
+      <div    class="input-group col-md-6   input-group-sm">
+        <ng-select  placeholder="Choisissez le Catalogue" required
+        bindLabel="nomCatalogue" 
+        [items]=listeCatalogue
+        bindValue="id"
+        [(ngModel)]="selectedCatalogue"
+        name="catalogueFormation"
+        >
+       </ng-select> 
+      </div>
+  </div>
+    
+    <div   class="row full-name-inputs">
+      <div class="input-group col-md-3   input-group-lg">
+        <label class="label" for="motcleFormation">Mots clés</label>
+      </div>
+      <div    class="input-group col-md-6   input-group-sm">
+        <ng-select  placeholder="Choisissez les mots clés" required
+        bindLabel="motcle" 
+        [items]=listeMotsCle
+        [multiple]="true"
+        bindValue="id"
+        [(ngModel)]="selectedMotCle"
+        name="motcleFormation"
+        >
+       </ng-select> 
+      </div>
+  </div>
+
+
+  <div   class="row full-name-inputs">
+    <div class="input-group col-md-3   input-group-lg">
+      <label class="label" for="filiereFormation">Filières métier</label>
+    </div>
+    <div    class="input-group col-md-6   input-group-sm">
+      <ng-select  placeholder="Choisissez les filières métier" 
+      bindLabel="nomFiliere" 
+      [items]=listeFiliere
+      [multiple]="true"
+      bindValue="id"
+      [(ngModel)]="selectedFiliere"
+      name="filiereFormation"
+      >
+     </ng-select> 
+    </div>
+</div>
+
+
+<div   class="row full-name-inputs label nvForm">
+  <div class="input-group col-md-3   input-group-lg">
+    <label for="descriptionFormation">Description</label>
+  </div>
+</div> 
+<ckeditor [editor]="Editor" (change)="onChange($event)" (ready)="onReady($event)"></ckeditor>
+
+
+    
+    
+
+
+  </nb-card-body>
+  </nb-card>
+  <div style="text-align:right;">
+    <button nbButton status="success" type="submit"  [disabled]=!monFormulairej.valid>{{A}}</button>
+    <button nbButton status="warning" (click)="fermer();" style="margin-left: 30px;">Return</button>
+  </div>
+    </form>
+  </div>

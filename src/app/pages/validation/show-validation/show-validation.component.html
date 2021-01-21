@@ -1,0 +1,118 @@
+<div class="col-md-12  " style="width:950px; height: 450px" >
+  <nb-card>
+  <nb-card-body>
+        
+  
+    <div   class="row full-name-inputs">
+        <div class="input-group col-md-3   input-group-lg">
+          <label class="label" for="formateur">Formateur</label>
+        </div>
+        <div    class="input-group col-md-6   input-group-sm">
+          <ng-select  placeholder="Choisissez le formateur" disabled
+          bindLabel="nom"
+          [items]=listeFormateur
+          bindValue="id"
+          [(ngModel)]="selectedFormateur"
+          name="formateur"
+          >
+         </ng-select> 
+        </div>
+    </div>  
+
+    <div   class="row full-name-inputs">
+      <div class="input-group col-md-3   input-group-lg">
+        <label class="label" for="Formation">Formation</label>
+      </div>
+      <div    class="input-group col-md-6   input-group-sm">
+        <ng-select  placeholder="Choisissez la formation" disabled
+        bindLabel="intituleFormation" 
+        [items]=listeFormation
+        bindValue="id"
+        [(ngModel)]="selectedFormation"
+        name="Formation"
+        >
+       </ng-select> 
+      </div>
+  </div>
+    
+ 
+
+
+  <div   class="row full-name-inputs">
+    <div class="input-group col-md-3   input-group-lg">
+      <label class="label" for="support">Support</label>
+    </div>
+    <div    class="input-group col-md-6   input-group-sm">
+      <ng-select  placeholder="Choisissez le support" disabled
+      bindLabel="titre" 
+      [items]=listeSupport
+      bindValue="id"
+      [(ngModel)]="selectedSupport"
+      name="support"
+      >
+     </ng-select> 
+    </div>
+</div>
+
+<div   class="row full-name-inputs">
+    <div class="input-group col-md-3   input-group-lg">
+      <label class="label" for="ing">Ingénieur pédagogique</label>
+    </div>
+    <div    class="input-group col-md-6   input-group-sm">
+      <ng-select  placeholder="Choisissez l'ingénieur pédagogique" disabled
+      
+      bindLabel="nom" 
+      [items]=listeIngenieur
+      bindValue="id"
+      [(ngModel)]="selectedIngenieur"
+      name="ing"
+      >
+     </ng-select> 
+    </div>
+</div>
+
+<div   class="row full-name-inputs label nvForm">
+    <div class="input-group col-md-3   input-group-lg">
+      <label for="date">Date de Validation</label>
+    </div>
+    <div    class="input-group col-md-6   input-group-sm">
+        <input nbInput  disabled
+        class="form-control"
+        placeholder="Date de validation "
+        [(ngModel)]="validation.date"
+        [nbDatepicker]="formpicker1"
+        name="date"
+        >
+ <nb-datepicker #formpicker1></nb-datepicker>
+    </div>
+   </div> 
+
+   <div   class="row full-name-inputs label nvForm">
+    <div class="input-group col-md-3   input-group-lg">
+      <label for="decision">Décision </label>
+    </div>
+    <div    class="input-group col-md-6   input-group-sm">
+      <input  type="text" class="form-control" nbInput disabled [(ngModel)]="validation.decision"  placeholder="Décision"   name="decision"  />
+    </div>
+   </div> 
+
+   <div   class="row full-name-inputs label nvForm">
+    <div class="input-group col-md-3   input-group-lg">
+      <label for="remarque">remarque</label>
+    </div>
+    <div    class="input-group col-md-6   input-group-sm">
+        <textarea class="form-control" type="text" class="form-control" nbInput disabled [(ngModel)]="validation.remarque"  placeholder="remarque"   name="remarque" ></textarea>
+    </div>
+   </div> 
+    
+    
+
+
+  </nb-card-body>
+  </nb-card>
+  <div style="text-align:right;">
+
+    <button nbButton status="warning" (click)="fermer();" style="margin-left: 30px;margin-bottom: 12px;">Return</button>
+  </div>
+
+  </div>

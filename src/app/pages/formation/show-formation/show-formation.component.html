@@ -1,0 +1,195 @@
+<div class="col-md-12  " style="width:950px; height: 450px" >
+   
+  <nb-card>
+  <nb-card-body>
+        
+    <div   class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-lg">
+          <label for="codeFormation">Code Formation</label>
+        </div>
+        <div    class="input-group col-md-6   input-group-sm">
+          <input  type="text" class="form-control" nbInput  [(ngModel)]="formation.codeFormation" disabled  placeholder="Code Formation" required  name="codeFormation"  />
+        </div>
+    </div> 
+
+    <div   class="row full-name-inputs label nvForm">
+      <div class="input-group col-md-3   input-group-lg">
+        <label for="alaune">A la une</label>
+      </div>
+      <nb-checkbox status="success" disabled [value]=true name="alaune" [(ngModel)]="formation.alaUne" style=" transform : scale(1.5); margin-left:18px; "></nb-checkbox>
+     </div> 
+
+
+    <div   class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-lg">
+          <label for="intituleFormation">Intitulé Formation</label>
+        </div>
+        <div    class="input-group col-md-6   input-group-sm">
+          <input  type="text" class="form-control" nbInput   [(ngModel)]="formation.intituleFormation" disabled  placeholder="Intitulé Formation" required  name="intituleFormation"/>
+        </div>
+    </div> 
+
+
+    <div   class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-lg">
+          <label for="dureeFormation">Durée Formation</label>
+        </div>
+        <div    class="input-group col-md-6   input-group-sm">
+          <input  type="number" class="form-control" nbInput  [(ngModel)]="formation.dureeFormation" disabled placeholder="Durée Formation" required  name="dureeFormation"/>
+        </div>
+    </div> 
+
+    <div   class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-lg">
+          <label for="nbreMinPart">Nombre minimale participant</label>
+        </div>
+        <div    class="input-group col-md-6   input-group-sm">
+          <input  type="number" class="form-control" nbInput  [(ngModel)]="formation.nbreMinPart" disabled  placeholder="Nombre minimale participant" required  name="nbreMinPart"/>
+        </div>
+    </div> 
+
+    <div   class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-lg">
+          <label for="nbreMaxPart">Nombre maximal participant</label>
+        </div>
+        <div    class="input-group col-md-6   input-group-sm">
+          <input  type="number" class="form-control" nbInput  [(ngModel)]="formation.nbreMaxPart" disabled placeholder="Nombre minimale participant" required  name="nbreMaxPart"/>
+        </div>
+    </div> 
+
+    <div   class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-lg">
+          <label for="descriptionFormation">Description</label>
+        </div>
+        <div    class="input-group col-md-6   input-group-sm">
+          <textarea nbInput fullWidth  class="form-control" [(ngModel)]="formation.descriptionFormation" disabled placeholder="description" required  name="descriptionFormation"></textarea>
+        </div>
+    </div> 
+
+    <div   class="row full-name-inputs label nvForm">
+      <div class="input-group col-md-3   input-group-lg">
+        <label for="CategorieFormation">Categorie</label>
+      </div>
+      <div    class="input-group col-md-6   input-group-sm">
+        <ng-select  placeholder="Categorie" disabled   name="CategorieFormation" [(ngModel)]="formation.categorieFormation">
+          <ng-option [value]="'Best'" >Best</ng-option>
+          <ng-option [value]="'New'" >New</ng-option>
+          <ng-option [value]="' '">None</ng-option>
+      </ng-select>
+      </div>
+  </div> 
+
+
+  <div   class="row full-name-inputs label nvForm">
+    <div class="input-group col-md-3   input-group-lg">
+      <label for="typeFormation">Type formation</label>
+    </div>
+    <div    class="input-group col-md-6   input-group-sm">
+      <ng-select  placeholder="type formation" disabled name="typeFormation" [(ngModel)]="formation.typeFormation">
+        <ng-option [value]="'Synthèse'">Synthèse</ng-option>
+        <ng-option [value]="'Séminaire'">Séminaire</ng-option>
+        <ng-option [value]="'Stage pratique'">Stage pratique</ng-option>
+    </ng-select>
+    </div>
+</div> 
+
+   
+
+
+    <div   class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-lg">
+          <label for="prixFormation">Prix</label>
+        </div>
+        <div    class="input-group col-md-6   input-group-sm">
+          <input  type="text" class="form-control" nbInput  [(ngModel)]="formation.prixFormation" disabled placeholder="Prix" required  name="prixFormation"/>
+        </div>
+    </div> 
+
+    <div   class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-lg">
+          <label for="Cible">Cible</label>
+        </div>
+        <div    class="input-group col-md-6   input-group-sm">
+          <input  type="text" class="form-control" nbInput  [(ngModel)]="formation.cible" disabled placeholder="Cible" required  name="Cible"/>
+        </div>
+    </div> 
+
+
+    <div   class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-lg">
+          <label for="prerequis">Prerequis</label>
+        </div>
+        <div    class="input-group col-md-6   input-group-sm">
+          <input  type="text" class="form-control" nbInput  [(ngModel)]="formation.prerequis" disabled  placeholder="prerequis" required  name="prerequis"/>
+        </div>
+    </div>
+
+    
+    <div   class="row full-name-inputs">
+      <div class="input-group col-md-3   input-group-lg">
+        <label class="label" for="motcleFormation">Catalogue</label>
+      </div>
+      <div    class="input-group col-md-6   input-group-sm">
+        <ng-select  placeholder="Choisissez le Catalogue"
+        bindLabel="nomCatalogue" 
+        [items]=listeCatalogue
+        bindValue="id"
+        [(ngModel)]="selectedCatalogue"
+        name="catalogueFormation"
+        [readonly]="true"
+        >
+       </ng-select> 
+      </div>
+  </div>
+
+    <div   class="row full-name-inputs">
+      <div class="input-group col-md-3   input-group-lg">
+        <label class="label" for="motcleFormation">Mots clés</label>
+      </div>
+      <div    class="input-group col-md-6   input-group-sm">
+        <ng-select  placeholder="Choisissez les mots clés"
+        bindLabel="motcle" 
+        [items]=ListeMotsCle
+        [multiple]="true"
+        bindValue="id"
+        [(ngModel)]="selectedMotCle"
+        name="motcleFormation"
+        [readonly]="true"
+        >
+       </ng-select> 
+      </div>
+  </div>
+
+  <div   class="row full-name-inputs">
+    <div class="input-group col-md-3   input-group-lg">
+      <label class="label" for="filiereFormation">Filières métier</label>
+    </div>
+    <div    class="input-group col-md-6   input-group-sm">
+      <ng-select  placeholder="Choisissez les filières métier"
+      bindLabel="nomFiliere" 
+      [items]=listeFiliere
+      [multiple]="true"
+      bindValue="id"
+      [(ngModel)]="selectedFiliere"
+      name="filiereFormation"
+      [readonly]="true"
+      >
+     </ng-select> 
+    </div>
+</div>
+      
+<div   class="row full-name-inputs label nvForm">
+  <div class="input-group col-md-3   input-group-lg">
+    <label for="descriptionFormation">Description</label>
+  </div>
+</div> 
+<div [innerHTML]="formation.descriptionFormation"  > </div>
+
+        
+  </nb-card-body>
+  </nb-card>
+  <div style="text-align:right;">
+    <button nbButton status="warning" (click)="fermer();" style="margin-left: 30px;margin-bottom: 12px;">Return</button>
+  </div>
+    
+  </div>

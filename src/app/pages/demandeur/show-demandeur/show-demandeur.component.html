@@ -1,0 +1,58 @@
+<div class="col-md-12  " style="width:950px; height: 325px" >
+    <form class="form-group" >
+    <nb-card>
+   
+    <nb-card-body>
+          
+  
+      
+         
+      <div   class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-lg">
+          <label for="Nomdemandeur">Nom demandeur</label>
+        </div>
+        <div    class="input-group col-md-6   input-group-sm">
+          <input  type="text" class="form-control" nbInput disabled [(ngModel)]="demandeur.nom"  placeholder="Nom Demandeur"   name="Nomdemandeur"  />
+        </div>
+       </div> 
+  
+            
+      <div   class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-lg">
+          <label for="prenomdemandeur">Prenom demandeur</label>
+        </div>
+        <div    class="input-group col-md-6   input-group-sm">
+          <input  type="text" class="form-control" nbInput disabled [(ngModel)]="demandeur.prenom"  placeholder="Prenom Demandeur"   name="prenomdemandeur"  />
+        </div>
+       </div> 
+
+               
+      <div   class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-lg">
+          <label for="Emaildemandeur">Email demandeur</label>
+        </div>
+        <div    class="input-group col-md-6   input-group-sm">
+          <input  type="text" class="form-control" nbInput disabled [(ngModel)]="demandeur.mail"  placeholder="Email Demandeur"   name="Emaildemandeur"  />
+        </div>
+       </div> 
+
+       <div   class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-lg">
+          <label for="teldemandeur">Tel demandeur</label>
+        </div>
+        <div    class="input-group col-md-6   input-group-sm">
+          <input  type="text" class="form-control" nbInput disabled [(ngModel)]="demandeur.tel"  placeholder="Tel Demandeur"   name="teldemandeur"  />
+        </div>
+       </div> 
+     
+      
+      
+  
+  
+    </nb-card-body>
+    </nb-card>
+    <div style="text-align:right;">
+      <button nbButton status="warning" (click)="fermer();" style="margin-left: 30px;">Return</button>
+    </div>
+  </form>
+    </div>

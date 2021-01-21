@@ -1,0 +1,62 @@
+<div class="col-md-12  " style="width:950px; height: 450px" >
+    <form class="form-group">
+      <nb-card>
+      <nb-card-body>
+            
+        <div   class="row full-name-inputs label nvForm">
+            <div class="input-group col-md-3   input-group-lg">
+              <label for="adr">Adresse</label>
+            </div>
+            <div    class="input-group col-md-6   input-group-sm">
+              <input  type="text" class="form-control" nbInput  [(ngModel)]="vitrine.adr"  placeholder="Adresse"   name="adr"  />
+            </div>
+           </div> 
+           <div   class="row full-name-inputs label nvForm">
+            <div class="input-group col-md-3   input-group-lg">
+              <label for="email">Email</label>
+            </div>
+            <div    class="input-group col-md-6   input-group-sm">
+              <input  type="text" class="form-control" nbInput  [(ngModel)]="vitrine.email"  placeholder="Email"   name="email"  />
+            </div>
+           </div> 
+           <div   class="row full-name-inputs label nvForm">
+            <div class="input-group col-md-3   input-group-lg">
+              <label for="tel">Telephone</label>
+            </div>
+            <div    class="input-group col-md-6   input-group-sm">
+              <input  type="text" class="form-control" nbInput  [(ngModel)]="vitrine.tel"  placeholder="telephone"   name="tel"  />
+            </div>
+           </div> 
+           <div   class="row full-name-inputs label nvForm">
+            <div class="input-group col-md-3   input-group-lg">
+              <label for="adr">Office</label>
+            </div>
+            <div    class="input-group col-md-6   input-group-sm">
+              <input  type="text" class="form-control" nbInput  [(ngModel)]="vitrine.office"  placeholder="Office"   name="office"  />
+            </div>
+           </div> 
+           <div   class="row full-name-inputs label nvForm">
+            <div class="input-group col-md-3   input-group-lg">
+              <label for="titre1">titre1</label>
+            </div>
+            <div    class="input-group col-md-6   input-group-sm">
+              <input  type="text" class="form-control" nbInput  [(ngModel)]="vitrine.titre1"  placeholder="titre1"   name="titre1"  />
+            </div>
+           </div> 
+           <div   class="row full-name-inputs label nvForm">
+            <div class="input-group col-md-3   input-group-lg">
+              <label for="titre2">titre2</label>
+            </div>
+            <div    class="input-group col-md-6   input-group-sm">
+              <input  type="text" class="form-control" nbInput  [(ngModel)]="vitrine.titre2"  placeholder="titre2"   name="titre2"  />
+            </div>
+           </div> 
+    
+    
+      </nb-card-body>
+      </nb-card>
+      <div style="text-align:right;">
+        <button nbButton status="success" (click)="save()" type="submit" >Save</button>
+      </div>
+    </form>
+      </div>

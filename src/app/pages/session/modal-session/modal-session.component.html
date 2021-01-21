@@ -1,0 +1,430 @@
+<div class="col-md-12  " style="width:950px; height: 450px">
+    <form class="form-group" (ngSubmit)="onAddSession()" #form="ngForm" #monFormulairej=ngForm autocomplete="off">
+        <nb-card>
+            <nb-card-body>
+
+
+
+                <!-----CODE---->
+                <div class="row full-name-inputs label nvForm">
+                    <div class="input-group col-md-3   input-group-lg">
+                        <label for="codeSession">Code session</label>
+                    </div>
+                    <div class="input-group col-md-6   input-group-sm">
+                        <input type="text" class="form-control" nbInput [(ngModel)]="session.codeSession" required
+                            placeholder="Code session" #codeSession="ngModel" pattern="^[a-zA-Z0-9_-]{3,60}$"
+                            maxlength="60" name="codeSession" />
+                    </div>
+                    <ng-container *ngIf="codeSession.invalid && codeSession.touched">
+                        <p style="top: 7px; position: relative;" class="caption status-danger"
+                            *ngIf="codeSession.errors?.required">
+                            Vous devez indiquer le code
+                        </p>
+                        <p style="top: 7px; position: relative;" class="caption status-danger"
+                            *ngIf="codeSession.errors?.pattern">
+                            Le code n'est pas valide
+                        </p>
+                    </ng-container>
+                    <ng-container *ngIf="!codeSession.invalid && codeSession.touched">
+                        <p style="top: 7px; position: relative;" class="caption status-success"
+                            *ngIf="!codeSession.errors?.pattern">
+                            ✔
+                        </p>
+                    </ng-container>
+                </div>
+
+
+                <!-----Formation---->
+                <div class="row full-name-inputs">
+                    <div class="input-group col-md-3   input-group-lg">
+                        <label class="label" for="Formation">Formation</label>
+                    </div>
+                    <div class="input-group col-md-6   input-group-sm">
+                        <ng-select placeholder="Choisissez la formation" bindLabel="intituleFormation"
+                            [items]=listeFormation bindValue="id" [(ngModel)]="selectedFormation" name="Formation" required>
+                        </ng-select>
+                    </div>
+                </div>
+
+
+
+                <!-----Formateur---->
+                <div class="row full-name-inputs">
+                    <div class="input-group col-md-3   input-group-lg">
+                        <label class="label" for="Formateur">Formateur</label>
+                    </div>
+                    <div class="input-group col-md-6   input-group-sm">
+                        <ng-select placeholder="Choisissez la formation" bindLabel="nom" [items]=listeFormateur
+                            bindValue="id" [(ngModel)]="selectedFormateur" name="Formateur">
+                        </ng-select>
+                    </div>
+                </div>
+
+
+
+                <!-----Client---->
+                <div class="row full-name-inputs">
+                    <div class="input-group col-md-3   input-group-lg">
+                        <label class="label" for="Client">Client</label>
+                    </div>
+                    <div class="input-group col-md-6   input-group-sm">
+                        <ng-select placeholder="Choisissez le client" bindLabel="nomClient" [items]=listeClient
+                            bindValue="id" [(ngModel)]="selectedClient" name="Client" required>
+                        </ng-select>
+                    </div>
+                </div>
+
+
+
+
+                <!-----typeSession---->
+                <div class="row full-name-inputs label nvForm">
+                    <div class="input-group col-md-3   input-group-lg">
+                        <label for="typeSession">Type session</label>
+                    </div>
+                    <div class="input-group col-md-6   input-group-sm">
+                        <ng-select placeholder="Type session" name="typeSession" [(ngModel)]="session.typeSession">
+                            <ng-option [value]="'Synthèse'">Synthèse</ng-option>
+                            <ng-option [value]="'Séminaire'">Séminaire</ng-option>
+                            <ng-option [value]="'Stage pratique'">Stage pratique</ng-option>
+                        </ng-select>
+                    </div>
+                </div>
+
+
+                <!-----modeSession---->
+                <div class="row full-name-inputs label nvForm">
+                    <div class="input-group col-md-3   input-group-lg">
+                        <label for="modeSession">Mode session</label>
+                    </div>
+                    <div class="input-group col-md-6   input-group-sm">
+                        <ng-select placeholder="Mode session" name="modeSession" [(ngModel)]="session.modeSession">
+                            <ng-option [value]="'Presentiel'">Presentiel</ng-option>
+                            <ng-option [value]="'Distatiel'">Distatiel</ng-option>
+                        </ng-select>
+                    </div>
+                </div>
+
+
+
+                <!-----dateDebSession---->
+                <div class="row full-name-inputs label nvForm">
+                    <div class="input-group col-md-3   input-group-lg">
+                        <label for="dateDebSession">Date debut</label>
+                    </div>
+                    <div class="input-group col-md-6   input-group-sm">
+                        <input nbInput class="form-control" placeholder="Date debut"
+                            [(ngModel)]="session.dateDebSession" [nbDatepicker]="formpicker1" name="dateDebSession">
+                        <nb-datepicker #formpicker1></nb-datepicker>
+                    </div>
+                </div>
+
+
+                <!-----Durée session---->
+                <div class="row full-name-inputs label nvForm">
+                    <div class="input-group col-md-3   input-group-lg">
+                        <label for="dureeSession">Durée session</label>
+                    </div>
+                    <div class="input-group col-md-6   input-group-sm">
+                        <input type="number" class="form-control" nbInput min="0" max="100"
+                            [(ngModel)]="session.dureeSession" placeholder="Durée session" name="dureeSession"
+                            #dureeSession="ngModel" pattern="[0-9]{0,3}" required />
+                    </div>
+                    <ng-container *ngIf="dureeSession.invalid && dureeSession.touched">
+                        <p style="top: 7px; position: relative;" class="caption status-danger"
+                            *ngIf="dureeSession.errors?.required">
+                            Vous devez indiquer la durée
+                        </p>
+                        <p style="top: 7px; position: relative;" class="caption status-danger"
+                            *ngIf="dureeSession.errors?.pattern">
+                            La durée n'est pas valide
+                        </p>
+                    </ng-container>
+                    <ng-container *ngIf="!dureeSession.invalid && dureeSession.touched">
+                        <p style="top: 7px; position: relative;" class="caption status-success"
+                            *ngIf="!dureeSession.errors?.pattern">
+                            ✔
+                        </p>
+                    </ng-container>
+                </div>
+
+
+
+                <!-----horaireSession---->
+                <div class="row full-name-inputs label nvForm">
+                    <div class="input-group col-md-3   input-group-lg">
+                        <label for="horaireSession">Horaire</label>
+                    </div>
+                    <div class="input-group col-md-6   input-group-sm">
+                        <input type="time" class="form-control" nbInput [(ngModel)]="session.horaireSession"
+                            placeholder="Horaire" name="horaireSession" />
+                    </div>
+                </div>
+
+
+
+
+                <!-----lieuSession---->
+                <div class="row full-name-inputs label nvForm">
+                    <div class="input-group col-md-3   input-group-lg">
+                        <label for="lieuSession">lieu</label>
+                    </div>
+                    <div class="input-group col-md-6   input-group-sm">
+                        <input type="text" class="form-control" nbInput [(ngModel)]="session.lieuSession"
+                            placeholder="lieu" name="lieuSession" />
+                    </div>
+                </div>
+
+
+
+                <!-----prixSession---->
+                <div class="row full-name-inputs label nvForm">
+                    <div class="input-group col-md-3   input-group-lg">
+                        <label for="prixSession">Prix</label>
+                    </div>
+                    <div class="input-group col-md-6   input-group-sm">
+                        <input type="text" class="form-control" nbInput [(ngModel)]="session.prixSession"
+                            placeholder="Prix" name="prixSession" #prixSession="ngModel" pattern="[0-9]*[,.]?[0-9]+" />
+                    </div>
+                    <ng-container *ngIf="prixSession.invalid && prixSession.touched">
+                        <p style="top: 7px; position: relative;" class="caption status-danger"
+                            *ngIf="prixSession.errors?.required">
+                            Vous devez indiquer le Prix
+                        </p>
+                        <p style="top: 7px; position: relative;" class="caption status-danger"
+                            *ngIf="prixSession.errors?.pattern">
+                            le prix n'est pas valide
+                        </p>
+                    </ng-container>
+                    <ng-container *ngIf="!prixSession.invalid && prixSession.touched">
+                        <p style="top: 7px; position: relative;" class="caption status-success"
+                            *ngIf="!prixSession.errors?.pattern">
+                            ✔
+                        </p>
+                    </ng-container>
+                </div>
+
+
+
+                <!-----honoraireFormateur---->
+                <div class="row full-name-inputs label nvForm">
+                    <div class="input-group col-md-3   input-group-lg">
+                        <label for="honoraireFormateur">Honoraire formateur</label>
+                    </div>
+                    <div class="input-group col-md-6   input-group-sm">
+                        <input type="text" class="form-control" nbInput [(ngModel)]="session.honoraireFormateur"
+                            placeholder="Honoraire formateur" name="honoraireFormateur" #honoraireFormateur="ngModel"
+                            pattern="[0-9]*[,.]?[0-9]+" />
+                    </div>
+                    <ng-container *ngIf="honoraireFormateur.invalid && honoraireFormateur.touched">
+                        <p style="top: 7px; position: relative;" class="caption status-danger"
+                            *ngIf="honoraireFormateur.errors?.required">
+                            Vous devez indiquer l'honoraire
+                        </p>
+                        <p style="top: 7px; position: relative;" class="caption status-danger"
+                            *ngIf="honoraireFormateur.errors?.pattern">
+                            L'honoraire n'est pas valide
+                        </p>
+                    </ng-container>
+                    <ng-container *ngIf="!honoraireFormateur.invalid && honoraireFormateur.touched">
+                        <p style="top: 7px; position: relative;" class="caption status-success"
+                            *ngIf="!honoraireFormateur.errors?.pattern">
+                            ✔
+                        </p>
+                    </ng-container>
+                </div>
+
+
+
+                <!-----fraisSejour---->
+                <div class="row full-name-inputs label nvForm">
+                    <div class="input-group col-md-3   input-group-lg">
+                        <label for="fraisSejour">Frais sejour</label>
+                    </div>
+                    <div class="input-group col-md-6   input-group-sm">
+                        <input type="text" class="form-control" nbInput [(ngModel)]="session.fraisSejour"
+                            placeholder="Frais sejour" name="fraisSejour" #fraisSejour="ngModel"
+                            pattern="[0-9]*[,.]?[0-9]+" />
+                    </div>
+                    <ng-container *ngIf="fraisSejour.invalid && fraisSejour.touched">
+                        <p style="top: 7px; position: relative;" class="caption status-danger"
+                            *ngIf="fraisSejour.errors?.required">
+                            Vous devez indiquer les frais
+                        </p>
+                        <p style="top: 7px; position: relative;" class="caption status-danger"
+                            *ngIf="fraisSejour.errors?.pattern">
+                            Les frais ne sont pas valides
+                        </p>
+                    </ng-container>
+                    <ng-container *ngIf="!fraisSejour.invalid && fraisSejour.touched">
+                        <p style="top: 7px; position: relative;" class="caption status-success"
+                            *ngIf="!fraisSejour.errors?.pattern">
+                            ✔
+                        </p>
+                    </ng-container>
+                </div>
+
+
+
+
+                <!-----fraisTransport---->
+                <div class="row full-name-inputs label nvForm">
+                    <div class="input-group col-md-3   input-group-lg">
+                        <label for="fraisTransport">Frais transport</label>
+                    </div>
+                    <div class="input-group col-md-6   input-group-sm">
+                        <input type="text" class="form-control" nbInput [(ngModel)]="session.fraisTransport"
+                            placeholder="Frais transport" name="fraisTransport" #fraisTransport="ngModel"
+                            pattern="[0-9]*[,.]?[0-9]+" />
+                    </div>
+                    <ng-container *ngIf="fraisTransport.invalid && fraisTransport.touched">
+                        <p style="top: 7px; position: relative;" class="caption status-danger"
+                            *ngIf="fraisTransport.errors?.required">
+                            Vous devez indiquer les frais
+                        </p>
+                        <p style="top: 7px; position: relative;" class="caption status-danger"
+                            *ngIf="fraisTransport.errors?.pattern">
+                            Les frais ne sont pas valides
+                        </p>
+                    </ng-container>
+                    <ng-container *ngIf="!fraisTransport.invalid && fraisTransport.touched">
+                        <p style="top: 7px; position: relative;" class="caption status-success"
+                            *ngIf="!fraisTransport.errors?.pattern">
+                            ✔
+                        </p>
+                    </ng-container>
+                </div>
+
+
+
+
+
+                <!-----perdiem---->
+                <div class="row full-name-inputs label nvForm">
+                    <div class="input-group col-md-3   input-group-lg">
+                        <label for="perdiem">Perdiem</label>
+                    </div>
+                    <div class="input-group col-md-6   input-group-sm">
+                        <input type="text" class="form-control" nbInput [(ngModel)]="session.perdiem"
+                            placeholder="Perdiem" name="perdiem" #perdiem="ngModel" pattern="[0-9]*[,.]?[0-9]+" />
+                    </div>
+                    <ng-container *ngIf="perdiem.invalid && perdiem.touched">
+                        <p style="top: 7px; position: relative;" class="caption status-danger"
+                            *ngIf="perdiem.errors?.required">
+                            Vous devez indiquer le perdiem
+                        </p>
+                        <p style="top: 7px; position: relative;" class="caption status-danger"
+                            *ngIf="perdiem.errors?.pattern">
+                            Le perdiem n'est pas valide
+                        </p>
+                    </ng-container>
+                    <ng-container *ngIf="!perdiem.invalid && perdiem.touched">
+                        <p style="top: 7px; position: relative;" class="caption status-success"
+                            *ngIf="!perdiem.errors?.pattern">
+                            ✔
+                        </p>
+                    </ng-container>
+                </div>
+
+
+
+
+                <!-----autreFrais---->
+                <div class="row full-name-inputs label nvForm">
+                    <div class="input-group col-md-3   input-group-lg">
+                        <label for="Autre frais">Autre frais</label>
+                    </div>
+                    <div class="input-group col-md-6   input-group-sm">
+                        <input type="text" class="form-control" nbInput [(ngModel)]="session.autreFrais"
+                            placeholder="Autre frais" name="autreFrais" #autreFrais="ngModel"
+                            pattern="[0-9]*[,.]?[0-9]+" />
+                    </div>
+                    <ng-container *ngIf="autreFrais.invalid && autreFrais.touched">
+                        <p style="top: 7px; position: relative;" class="caption status-danger"
+                            *ngIf="autreFrais.errors?.required">
+                            Vous devez indiquer les frais
+                        </p>
+                        <p style="top: 7px; position: relative;" class="caption status-danger"
+                            *ngIf="autreFrais.errors?.pattern">
+                            Les frais ne sont pas valides
+                        </p>
+                    </ng-container>
+                    <ng-container *ngIf="!autreFrais.invalid && autreFrais.touched">
+                        <p style="top: 7px; position: relative;" class="caption status-success"
+                            *ngIf="!autreFrais.errors?.pattern">
+                            ✔
+                        </p>
+                    </ng-container>
+                </div>
+
+
+
+
+
+
+                <!-----noteEvalFormateur---->
+                <div class="row full-name-inputs label nvForm">
+                    <div class="input-group col-md-3   input-group-lg">
+                        <label for="noteEvalFormateur">Evaluation formateur</label>
+                    </div>
+                    <div class="input-group col-md-6   input-group-sm">
+                        <input type="number" class="form-control" nbInput min="0" max="99"
+                            [(ngModel)]="session.noteEvalFormateur" placeholder="Evaluation formateur"
+                            name="noteEvalFormateur" #noteEvalFormateur="ngModel" pattern="[0-9]{0,3}" />
+                    </div>
+                    <ng-container *ngIf="noteEvalFormateur.invalid && noteEvalFormateur.touched">
+                        <p style="top: 7px; position: relative;" class="caption status-danger"
+                            *ngIf="noteEvalFormateur.errors?.required">
+                            Vous devez indiquer la note
+                        </p>
+                        <p style="top: 7px; position: relative;" class="caption status-danger"
+                            *ngIf="noteEvalFormateur.errors?.pattern">
+                            la note n'est pas valide
+                        </p>
+                    </ng-container>
+                    <ng-container *ngIf="!noteEvalFormateur.invalid && noteEvalFormateur.touched">
+                        <p style="top: 7px; position: relative;" class="caption status-success"
+                            *ngIf="!noteEvalFormateur.errors?.pattern">
+                            ✔
+                        </p>
+                    </ng-container>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </nb-card-body>
+        </nb-card>
+        <div style="text-align:right;">
+            <button nbButton status="success" type="submit" [disabled]=!monFormulairej.valid>{{A}}</button>
+            <button nbButton status="warning" (click)="fermer();" style="margin-left: 30px;">Return</button>
+        </div>
+    </form>
+</div>

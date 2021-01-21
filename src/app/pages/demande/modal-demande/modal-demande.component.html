@@ -1,0 +1,226 @@
+<div class="col-md-12  " style="width:950px; height: 500px" >
+    <form class="form-group" #form="ngForm"  #monFormulairej = ngForm  (ngSubmit)="onAddDemande()" >
+    <nb-card>
+   
+    <nb-card-body>
+          
+        <div   class="row full-name-inputs">
+            <div class="input-group col-md-3   input-group-lg">
+              <label class="label" for="Formation">Formation</label>
+            </div>
+            <div    class="input-group col-md-6   input-group-sm">
+              <ng-select  placeholder="Choisissez la formation" required
+              bindLabel="intituleFormation" 
+              [items]=listeFormation
+              bindValue="id"
+              [(ngModel)]="selectedFormation"
+              name="Formation"
+              >
+             </ng-select> 
+            </div>
+        </div>
+
+        <div   class="row full-name-inputs">
+            <div class="input-group col-md-3   input-group-lg">
+              <label class="label" for="Demandeur">Demandeur</label>
+            </div>
+            <div    class="input-group col-md-6   input-group-sm">
+              <ng-select  placeholder="Choisissez le Demandeur" required
+              bindLabel="nom" 
+              [items]=listeDemandeur
+              bindValue="id"
+              [(ngModel)]="selectedDemandeur"
+              name="Demandeur"
+              >
+             </ng-select> 
+            </div>
+        </div>
+
+
+
+        <div   class="row full-name-inputs">
+          <div class="input-group col-md-3   input-group-lg">
+            <label class="label" for="Client">Client</label>
+          </div>
+          <div    class="input-group col-md-6   input-group-sm">
+            <ng-select  placeholder="Choisissez le client" 
+            bindLabel="nomClient" 
+            [items]=listeClient
+            bindValue="id"
+            [(ngModel)]="selectedClient"
+            name="Client"
+            >
+           </ng-select> 
+          </div>
+      </div>
+
+        <div   class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="date">Date</label>
+          </div>
+          <div    class="input-group col-md-6   input-group-sm">
+              <input nbInput 
+              class="form-control"
+              placeholder="Date"
+              [(ngModel)]="demande.date"
+              [nbDatepicker]="formpicker1"
+              name="date"
+              >
+       <nb-datepicker #formpicker1></nb-datepicker>
+          </div>
+         </div> 
+
+
+         <div   class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="date1">Date prévue</label>
+          </div>
+          <div    class="input-group col-md-6   input-group-sm">
+              <input nbInput 
+              class="form-control"
+              placeholder="Date prévue"
+              [(ngModel)]="demande.dateDebPrevue"
+              [nbDatepicker]="formpicker"
+              name="date1"
+              >
+       <nb-datepicker #formpicker></nb-datepicker>
+          </div>
+         </div> 
+
+         <div   class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="typedemande">Type demande</label>
+          </div>
+          <div    class="input-group col-md-6   input-group-sm">
+            <ng-select   required [(ngModel)]="demande.type"  placeholder="type Demande"   name="typedemande" >
+              <ng-option [value]="'Synthèse'" >Synthèse</ng-option>
+              <ng-option [value]="'Séminaire'">Séminaire</ng-option>
+              <ng-option [value]="'Stage pratique'">Stage pratique</ng-option>
+          </ng-select>
+        
+          </div>
+         </div> 
+
+         <div   class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="etatdemande">Etat demande</label>
+          </div>
+          <div    class="input-group col-md-6   input-group-sm">
+            <ng-select     required  [(ngModel)]="demande.etat"  placeholder="etat Demande" name="etatdemande" >
+              <ng-option [value]="'Reçue'" >Reçue</ng-option>
+              <ng-option [value]="'En cours'">En cours</ng-option>
+              <ng-option [value]="'Annulée'">Annulée</ng-option>
+              <ng-option [value]="'Refusée'">Refusée</ng-option>
+              <ng-option [value]="'Ajournée'">Ajournée</ng-option>
+              <ng-option [value]="'Acceptée'">Acceptée</ng-option>
+          </ng-select>
+          </div>
+         </div> 
+
+         <div   class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="prixdemande">Prix demande</label>
+          </div>
+          <div    class="input-group col-md-6   input-group-sm">
+            <input  type="number" class="form-control" nbInput required [(ngModel)]="demande.prix"  placeholder="prix Demande" min="0"  name="prixdemande"  #prixdemande="ngModel" pattern="[0-9]*[,.]?[0-9]+"/>
+          </div>
+          <ng-container *ngIf="prixdemande.invalid && prixdemande.touched">
+            <p style="top: 7px; position: relative;"  class="caption status-danger" *ngIf="prixdemande.errors?.required">
+              Vous devez indiquer le Prix
+            </p>
+            <p style="top: 7px; position: relative;"  class="caption status-danger" *ngIf="prixdemande.errors?.pattern">
+              le prix  n'est pas valide
+            </p>
+          </ng-container>
+          <ng-container *ngIf="!prixdemande.invalid && prixdemande.touched">
+            <p style="top: 7px; position: relative;" class="caption status-success" *ngIf="!prixdemande.errors?.pattern" >
+              ✔
+            </p>
+          </ng-container>
+         </div>
+
+         
+         <div   class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="lieudemande">Lieu prévue demande</label>
+          </div>
+          <div    class="input-group col-md-6   input-group-sm">
+            <input  type="text" class="form-control" nbInput required [(ngModel)]="demande.lieuPrevue"  placeholder="lieu Demande"   name="lieudemande" maxlength="60"     #lieudemande="ngModel" pattern="^[a-zA-Z0-9 _-]{3,60}$"/>
+          </div>
+          <ng-container *ngIf="lieudemande.invalid && lieudemande.touched">
+            <p style="top: 7px; position: relative;"  class="caption status-danger" *ngIf="lieudemande.errors?.required">
+              Vous devez indiquer le lieu
+            </p>
+            <p style="top: 7px; position: relative;"  class="caption status-danger" *ngIf="lieudemande.errors?.pattern">
+              le lieu n'est pas valide
+            </p>
+          </ng-container>
+          <ng-container *ngIf="!lieudemande.invalid && lieudemande.touched">
+            <p style="top: 7px; position: relative;" class="caption status-success" *ngIf="!lieudemande.errors?.pattern" >
+              ✔
+            </p>
+          </ng-container>
+         </div>
+
+         <div   class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="dureePrevuedemande">duree prévue demande</label>
+          </div>
+          <div    class="input-group col-md-6   input-group-sm">
+            <input  type="number" class="form-control" nbInput required [(ngModel)]="demande.dureePrevue" min="0" placeholder="duree Prévue Demande"   name="dureePrevuedemande" #dureePrevuedemande="ngModel" pattern="[0-9]{0,3}" />
+          </div>
+          <ng-container *ngIf="dureePrevuedemande.invalid && dureePrevuedemande.touched">
+            <p style="top: 7px; position: relative;"  class="caption status-danger" *ngIf="dureePrevuedemande.errors?.required">
+              Vous devez indiquer la durée
+            </p>
+            <p style="top: 7px; position: relative;"  class="caption status-danger" *ngIf="dureePrevuedemande.errors?.pattern">
+              La durée n'est pas valide
+            </p>
+          </ng-container>
+          <ng-container *ngIf="!dureePrevuedemande.invalid && dureePrevuedemande.touched">
+            <p style="top: 7px; position: relative;" class="caption status-success" *ngIf="!dureePrevuedemande.errors?.pattern" >
+              ✔
+            </p>
+          </ng-container>
+         </div>
+
+         <div   class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="horairePrevudemande">horaire prévue demande</label>
+          </div>
+          <div    class="input-group col-md-6   input-group-sm">
+            <input  type="text" class="form-control" nbInput required [(ngModel)]="demande.horairePrevu"  placeholder="horaire prévue Demande"   name="horairePrevudemande"  />
+          </div>
+         </div>
+
+         <div   class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="modedemande">mode demande</label>
+          </div>
+          <div    class="input-group col-md-6   input-group-sm">
+            <ng-select     required [(ngModel)]="demande.mode"  placeholder="mode Demande"   name="modedemande" >
+              <ng-option [value]="'En ligne'" >En ligne</ng-option>
+              <ng-option [value]="'Présentielle'">Présentielle</ng-option>
+          </ng-select>
+          </div>
+         </div>
+
+
+
+
+
+
+  
+  
+      
+      
+  
+  
+    </nb-card-body>
+    </nb-card>
+    <div style="text-align:right;">
+      <button nbButton status="success" type="submit"  [disabled]=!monFormulairej.valid>{{A}}</button>
+      <button nbButton status="warning" (click)="fermer();" style="margin-left: 30px;">Return</button>
+    </div>
+  </form>
+    </div>

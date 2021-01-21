@@ -1,0 +1,71 @@
+<div class="col-md-12  " style="width:950px; height: 423px" >
+    <form class="form-group" >
+    <nb-card>
+    <nb-card-body>
+
+
+      <div   class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-lg">
+          <label for="urlfichier">Selectionnez un fichier</label>
+        </div>
+        <div    class="input-group col-md-6   input-group-sm">
+          <input  type="file" class="form-control" nbInput (change)="getFileDetails($event)"  style="    margin-right: 20rem;" />
+        </div>
+        <p style=" color:red;padding-left: 0.9rem;">File MUST be inside this directory "src\assets\files"</p>
+      </div>
+
+      <div   class="row full-name-inputs label nvForm">
+
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="Nomfichier">Nom Fichier</label>
+          </div>
+          <div    class="input-group col-md-6   input-group-sm">
+            <input  type="text" class="form-control" nbInput  [(ngModel)]="fichier.nom"  placeholder="Nom Fichier"   name="Nomfichier"  />
+          </div>
+        </div>
+
+        <div   class="row full-name-inputs label nvForm">
+            <div class="input-group col-md-3   input-group-lg">
+              <label for="typefichier">Type Fichier</label>
+            </div>
+            <div    class="input-group col-md-6   input-group-sm">
+              <input  type="text" class="form-control" nbInput  [(ngModel)]="fichier.type"  placeholder="type Fichier"   name="typefichier"  />
+            </div>
+          </div>
+
+          <div   class="row full-name-inputs label nvForm">
+            <div class="input-group col-md-3   input-group-lg">
+              <label for="taillefichier">Taille Fichier</label>
+            </div>
+            <div    class="input-group col-md-6   input-group-sm">
+              <input  type="string" class="form-control" nbInput  [(ngModel)]="fichier.taille"  placeholder="taille Fichier"   name="taillefichier"  />
+            </div>
+          </div>
+
+          <div   class="row full-name-inputs label nvForm">
+            <div class="input-group col-md-3   input-group-lg">
+              <label for="urlfichier">URL Fichier</label>
+            </div>
+            <div    class="input-group col-md-6   input-group-sm">
+              <input  type="string" class="form-control" nbInput [(ngModel)]="fichier.url"   placeholder="url Fichier"   name="urlfichier"  />
+            </div>
+          </div>
+
+          <div   class="row full-name-inputs label nvForm">
+            <div class="input-group col-md-3   input-group-lg">
+              <label for="naturefichier">Nature Fichier</label>
+            </div>
+            <div    class="input-group col-md-6   input-group-sm">
+              <input  type="text" class="form-control" nbInput  [(ngModel)]="fichier.nature"  placeholder="nature Fichier"   name="naturefichier"  />
+            </div>
+          </div>
+
+
+    </nb-card-body>
+    </nb-card>
+    <div style="text-align:right;">
+      <button nbButton status="success" type="submit" (click)="onAddFichier()">{{A}}</button>
+      <button nbButton status="warning" (click)="fermer();" style="margin-left: 30px;">Return</button>
+    </div>
+  </form>
+    </div>

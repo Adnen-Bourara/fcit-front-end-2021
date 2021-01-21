@@ -1,0 +1,99 @@
+<div class="col-md-12  " style="width:950px; height: 450px" >
+  <form class="form-group">
+    <nb-card>
+    <nb-card-body>
+          
+      <div   class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="ingenieurnom">Nom ingenieur</label>
+          </div>
+          <div    class="input-group col-md-6   input-group-sm">
+            <input  type="text" class="form-control" required nbInput  [(ngModel)]="ingenieur.nom"  placeholder="Nom ingenieur"   name="ingenieurnom"  />
+          </div>
+         </div> 
+  
+         <div   class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="ingenieurprenom">Prenom ingenieur</label>
+          </div>
+          <div    class="input-group col-md-6   input-group-sm">
+            <input  type="text" class="form-control" nbInput required [(ngModel)]="ingenieur.prenom"  placeholder="Prenom ingenieur"   name="ingenieurprenom"  />
+          </div>
+         </div> 
+
+  
+  
+         <div   class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="CVformateur">CV ingenieur</label>
+          </div>
+          <div    class="input-group col-md-6   input-group-sm">
+              <input style="    height: 1.4rem; width: 5rem;" (change)="getFileDetails($event)" type="file"  nbInput    name="CVing"  />
+              <input  type="text" class="form-control" nbInput disabled [(ngModel)]="ingenieur.cv"  placeholder="CV ingenieur"   name="CVing"  />
+            </div>
+            <p style=" color:red;padding-left: 0.9rem;">CV file MUST be inside this directory "src\assets\CV"</p>
+         </div> 
+  
+         <div   class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="emailformateur">Email ingenieur</label>
+          </div>
+          <div    class="input-group col-md-6   input-group-sm">
+            <input  type="text" class="form-control" nbInput  [(ngModel)]="ingenieur.email"  placeholder="Email ingenieur"   name="emailformateur"  />
+          </div>
+         </div> 
+  
+         <div   class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="telformateur">Tel ingenieur</label>
+          </div>
+          <div    class="input-group col-md-6   input-group-sm">
+            <input  type="text" class="form-control" nbInput  [(ngModel)]="ingenieur.tel"  placeholder="Tel ingenieur"   name="telformateur"  />
+          </div>
+         </div> 
+  
+         <div   class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="nssformateur">Nss ingenieur</label>
+          </div>
+          <div    class="input-group col-md-6   input-group-sm">
+            <input  type="number" class="form-control" nbInput  [(ngModel)]="ingenieur.nss"  placeholder="Nss ingenieur"   name="nssformateur"  />
+          </div>
+         </div> 
+
+         <div   class="row full-name-inputs label nvForm">
+            <div class="input-group col-md-3   input-group-lg">
+              <label for="specialiteformateur">specialite ingenieur</label>
+            </div>
+            <div    class="input-group col-md-6   input-group-sm">
+              <input  type="text" class="form-control" nbInput  [(ngModel)]="ingenieur.specialite"  placeholder="specialite ingenieur"   name="specialiteformateur"  />
+            </div>
+           </div> 
+  
+         <div   class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="salaireformateur">Salaire ingenieur</label>
+          </div>
+          <div    class="input-group col-md-6   input-group-sm">
+            <input  type="number" class="form-control" nbInput  [(ngModel)]="ingenieur.salaire"  placeholder="Salaire ingenieur"   name="salaireformateur"  />
+          </div>
+         </div> 
+  
+         <div   class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="adrformateur">Adresse ingenieur</label>
+          </div>
+          <div    class="input-group col-md-6   input-group-sm">
+            <input  type="text" class="form-control" nbInput  [(ngModel)]="ingenieur.adr"  placeholder="Adresse ingenieur"   name="adrformateur"  />
+          </div>
+         </div> 
+  
+  
+    </nb-card-body>
+    </nb-card>
+    <div style="text-align:right;">
+      <button nbButton status="success" (click)="onAddIng()" type="submit" >{{A}}</button>
+      <button nbButton status="warning" (click)="fermer();" style="margin-left: 30px;">Return</button>
+    </div>
+  </form>
+    </div>

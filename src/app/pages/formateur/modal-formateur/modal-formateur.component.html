@@ -1,0 +1,347 @@
+<div class="col-md-12  " style="width:950px; height: 450px">
+  <form class="form-group" #form="ngForm" (ngSubmit)="onAddFormateur()" #monFormulairej=ngForm autocomplete="off">
+    <nb-card>
+
+      <nb-card-body>
+
+
+
+
+        <div class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="Nomformateur">Nom formateur</label>
+          </div>
+          <div class="input-group col-md-6   input-group-sm">
+            <input type="text" class="form-control" nbInput required [(ngModel)]="formateur.nom"
+              placeholder="Nom Formateur" name="Nomformateur" maxlength="20" #Nomformateur="ngModel"
+              pattern="^[a-zA-Z _-]{3,20}$" />
+          </div>
+          <ng-container *ngIf="Nomformateur.invalid && Nomformateur.touched">
+            <p style="top: 7px; position: relative;" class="caption status-danger"
+              *ngIf="Nomformateur.errors?.required">
+              Vous devez indiquer le nom
+            </p>
+            <p style="top: 7px; position: relative;" class="caption status-danger" *ngIf="Nomformateur.errors?.pattern">
+              Le nom n'est pas valide
+            </p>
+          </ng-container>
+          <ng-container *ngIf="!Nomformateur.invalid && Nomformateur.touched">
+            <p style="top: 7px; position: relative;" class="caption status-success"
+              *ngIf="!Nomformateur.errors?.pattern">
+              ✔
+            </p>
+          </ng-container>
+        </div>
+
+        <div class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="Prenomformateur">Prenom formateur</label>
+          </div>
+          <div class="input-group col-md-6   input-group-sm">
+            <input type="text" class="form-control" nbInput required [(ngModel)]="formateur.prenom"
+              placeholder="Prenom Formateur" name="Prenomformateur" maxlength="20" #Prenomformateur="ngModel"
+              pattern="^[a-zA-Z _-]{3,20}$" />
+          </div>
+          <ng-container *ngIf="Prenomformateur.invalid && Prenomformateur.touched">
+            <p style="top: 7px; position: relative;" class="caption status-danger"
+              *ngIf="Prenomformateur.errors?.required">
+              Vous devez indiquer le prenom
+            </p>
+            <p style="top: 7px; position: relative;" class="caption status-danger"
+              *ngIf="Prenomformateur.errors?.pattern">
+              Le prenom n'est pas valide
+            </p>
+          </ng-container>
+          <ng-container *ngIf="!Prenomformateur.invalid && Prenomformateur.touched">
+            <p style="top: 7px; position: relative;" class="caption status-success"
+              *ngIf="!Prenomformateur.errors?.pattern">
+              ✔
+            </p>
+          </ng-container>
+        </div>
+
+        <div class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="classeformateur">Classe formateur</label>
+          </div>
+          <div class="input-group col-md-6   input-group-sm">
+            <input type="text" class="form-control" nbInput required [(ngModel)]="formateur.classe"
+              placeholder="Classe Formateur" name="classeformateur" />
+          </div>
+        </div>
+
+        <div class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="fonctionformateur">Fonction formateur</label>
+          </div>
+          <div class="input-group col-md-6   input-group-sm">
+            <input type="text" class="form-control" nbInput required [(ngModel)]="formateur.fonction"
+              placeholder="Fonction Formateur" name="fonctionformateur" />
+          </div>
+        </div>
+
+        <div class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="photoformateur" style="margin-top: 2rem;">Photo formateur</label>
+          </div>
+          <div style="margin-top: 2rem;" class="input-group col-md-6   input-group-sm">
+            <input style=" height: 1.4rem; width: 5rem;" (change)="getFileDetailsPhoto($event)" type="file" nbInput
+              accept="image/png, image/jpeg" name="photoformateur" />
+            <input type="text" class="form-control" nbInput disabled [(ngModel)]="formateur.photo"
+              placeholder="Photo Formateur" name="photoformateur" />
+          </div>
+          <div class="col" style="    height: 7rem;">
+            <img [src]="sourceImage" style=" width: auto;
+          height: auto;
+          max-width: 100%;
+          max-height: 100%;">
+          </div>
+          <p style=" color:red;    margin-top: -2rem;
+          padding-left: 0.9rem;">Image MUST be inside this directory "src\assets\images"</p>
+        </div>
+
+        <div class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="CVformateur">CV formateur</label>
+          </div>
+          <div class="input-group col-md-6   input-group-sm">
+            <input style="    height: 1.4rem; width: 5rem;" (change)="getFileDetails($event)" type="file" nbInput
+              name="CVformateur" />
+            <input type="text" class="form-control" nbInput disabled [(ngModel)]="formateur.cv"
+              placeholder="CV Formateur" name="CVformateur" />
+          </div>
+          <p style=" color:red;padding-left: 0.9rem;">CV file MUST be inside this directory "src\assets\CV"</p>
+        </div>
+
+        <div class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="emailformateur">Email formateur</label>
+          </div>
+          <div class="input-group col-md-6   input-group-sm">
+            <input type="text" class="form-control" nbInput required [(ngModel)]="formateur.email"
+              placeholder="Email Formateur" name="emailformateur" #emailformateur="ngModel" maxlength="25"
+              pattern=".+@.+\..+" />
+          </div>
+          <ng-container *ngIf="emailformateur.invalid && emailformateur.touched">
+            <p style="top: 7px; position: relative;" class="caption status-danger"
+              *ngIf="emailformateur.errors?.required">
+              Vous devez indiquer l'adresse e-mail
+            </p>
+            <p style="top: 7px; position: relative;" class="caption status-danger"
+              *ngIf="emailformateur.errors?.pattern">
+              L'adresse e-mail n'est pas valide
+            </p>
+          </ng-container>
+          <ng-container *ngIf="!emailformateur.invalid && emailformateur.touched">
+            <p style="top: 7px; position: relative;" class="caption status-success"
+              *ngIf="!emailformateur.errors?.pattern">
+              ✔
+            </p>
+          </ng-container>
+        </div>
+
+        <div class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="telformateur">Tel formateur</label>
+          </div>
+          <div class="input-group col-md-6   input-group-sm">
+            <input type="text" class="form-control" nbInput required [(ngModel)]="formateur.tel"
+              placeholder="Tel Formateur" name="telformateur" maxlength="20"
+              pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{3})(( x| ext)\d{1,5}){0,1}$"
+              #telformateur="ngModel" />
+          </div>
+          <ng-container *ngIf="telformateur.invalid && telformateur.touched">
+            <p style="top: 7px; position: relative;" class="caption status-danger"
+              *ngIf="telformateur.errors?.required">
+              Vous devez indiquer le Téléphone
+            </p>
+            <p style="top: 7px; position: relative;" class="caption status-danger" *ngIf="telformateur.errors?.pattern">
+              Téléphone n'est pas valide
+            </p>
+          </ng-container>
+          <ng-container *ngIf="!telformateur.invalid && telformateur.touched">
+            <p style="top: 7px; position: relative;" class="caption status-success"
+              *ngIf="!telformateur.errors?.pattern">
+              ✔
+            </p>
+          </ng-container>
+        </div>
+
+        <div class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="nssformateur">Nss formateur</label>
+          </div>
+          <div class="input-group col-md-6   input-group-sm">
+            <input type="number" class="form-control" nbInput required [(ngModel)]="formateur.nss" min="0"
+              placeholder="Nss Formateur" name="nssformateur" />
+          </div>
+        </div>
+
+        <div class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="salaireformateur">Salaire formateur</label>
+          </div>
+          <div class="input-group col-md-6   input-group-sm">
+            <input type="number" class="form-control" nbInput required [(ngModel)]="formateur.salaire" min="0"
+              placeholder="Salaire Formateur" name="salaireformateur" min="0" #salaireformateur="ngModel"
+              pattern="[0-9]*[,.]?[0-9]+" />
+          </div>
+          <ng-container *ngIf="salaireformateur.invalid && salaireformateur.touched">
+            <p style="top: 7px; position: relative;" class="caption status-danger"
+              *ngIf="salaireformateur.errors?.required">
+              Vous devez indiquer le salaire
+            </p>
+            <p style="top: 7px; position: relative;" class="caption status-danger"
+              *ngIf="salaireformateur.errors?.pattern">
+              le salaire n'est pas valide
+            </p>
+          </ng-container>
+          <ng-container *ngIf="!salaireformateur.invalid && salaireformateur.touched">
+            <p style="top: 7px; position: relative;" class="caption status-success"
+              *ngIf="!salaireformateur.errors?.pattern">
+              ✔
+            </p>
+          </ng-container>
+        </div>
+
+        <div class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="adrformateur">Adresse formateur</label>
+          </div>
+          <div class="input-group col-md-6   input-group-sm">
+            <input type="text" class="form-control" nbInput [(ngModel)]="formateur.adr" placeholder="Adresse Formateur"
+              name="adrformateur" />
+          </div>
+        </div>
+
+        <div class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="dateAjout">Date Ajout</label>
+          </div>
+          <div class="input-group col-md-6   input-group-sm">
+            <input nbInput class="form-control" placeholder="Date d'ajout " [(ngModel)]="formateur.dateAjout"
+              [nbDatepicker]="formpicker1" name="dateAjout">
+            <nb-datepicker #formpicker1></nb-datepicker>
+          </div>
+        </div>
+
+        <div class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="cinformateur">CIN formateur</label>
+          </div>
+          <div class="input-group col-md-6   input-group-sm">
+            <input type="number" class="form-control" nbInput [(ngModel)]="formateur.cin" min="0"
+              placeholder="CIN Formateur" name="cinformateur" />
+          </div>
+        </div>
+
+        <div class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="copiecinformateur">Vérification CIN formateur</label>
+          </div>
+          <div class="input-group col-md-6   input-group-sm">
+            <input type="number" class="form-control" nbInput [(ngModel)]="formateur.copieCin" min="0"
+              placeholder="CIN Formateur" name="copiecinformateur" />
+          </div>
+        </div>
+
+        <div class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="passportformateur">Passport formateur</label>
+          </div>
+          <div class="input-group col-md-6   input-group-sm">
+            <input type="text" class="form-control" nbInput [(ngModel)]="formateur.passport" min="0"
+              placeholder="Passport Formateur" name="passportformateur" />
+          </div>
+        </div>
+
+        <div class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="copiePassportformateur">Vérification passport formateur</label>
+          </div>
+          <div class="input-group col-md-6   input-group-sm">
+            <input type="text" class="form-control" nbInput [(ngModel)]="formateur.copiePassport" min="0"
+              placeholder="Passport Formateur" name="copiePassportformateur" />
+          </div>
+        </div>
+
+        <div class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="visaformateur">Visa formateur</label>
+          </div>
+          <div class="input-group col-md-6   input-group-sm">
+            <input type="text" class="form-control" nbInput [(ngModel)]="formateur.visa" placeholder="Visa Formateur"
+              name="visaformateur" />
+          </div>
+        </div>
+
+        <div class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="valVisaformateur">Validité Visa formateur</label>
+          </div>
+          <div class="input-group col-md-6   input-group-sm">
+            <input nbInput class="form-control" placeholder="Validité Visa Formateur" [nbDatepicker]="formpicker2"
+              [(ngModel)]="formateur.valVisa" name="valVisaformateur">
+            <nb-datepicker #formpicker2></nb-datepicker>
+          </div>
+        </div>
+
+        <div class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="tarifformateur">Tarif formateur</label>
+          </div>
+          <div class="input-group col-md-6   input-group-sm">
+            <input type="number" class="form-control" nbInput [(ngModel)]="formateur.tarif"
+              placeholder="Tarif Formateur" required name="tarifformateur" min="0" #tarifformateur="ngModel"
+              pattern="[0-9]*[,.]?[0-9]+" />
+          </div>
+          <ng-container *ngIf="tarifformateur.invalid && tarifformateur.touched">
+            <p style="top: 7px; position: relative;" class="caption status-danger"
+              *ngIf="tarifformateur.errors?.required">
+              Vous devez indiquer la Tarif
+            </p>
+            <p style="top: 7px; position: relative;" class="caption status-danger"
+              *ngIf="tarifformateur.errors?.pattern">
+              la Tarif n'est pas valide
+            </p>
+          </ng-container>
+          <ng-container *ngIf="!tarifformateur.invalid && tarifformateur.touched">
+            <p style="top: 7px; position: relative;" class="caption status-success"
+              *ngIf="!tarifformateur.errors?.pattern">
+              ✔
+            </p>
+          </ng-container>
+        </div>
+
+        <div class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="ribformateur">RIB formateur</label>
+          </div>
+          <div class="input-group col-md-6   input-group-sm">
+            <input type="number" class="form-control" nbInput [(ngModel)]="formateur.rib" min="0"
+              placeholder="RIB Formateur" maxlength="20" name="ribformateur" />
+          </div>
+        </div>
+
+        <div class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="copieRibformateur">Vérification RIB formateur</label>
+          </div>
+          <div class="input-group col-md-6   input-group-sm">
+            <input type="number" class="form-control" nbInput [(ngModel)]="formateur.copieRib" min="0"
+              placeholder="RIB Formateur" name="copieRibformateur" />
+          </div>
+        </div>
+
+
+
+
+
+      </nb-card-body>
+    </nb-card>
+    <div style="text-align:right;">
+      <button nbButton status="success" type="submit" [disabled]=!monFormulairej.valid>{{A}}</button>
+      <button nbButton status="warning" (click)="fermer();" style="margin-left: 30px;">Return</button>
+    </div>
+  </form>
+</div>

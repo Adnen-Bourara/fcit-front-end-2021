@@ -1,0 +1,174 @@
+<div class="col-md-12  " style="width:950px; height: 500px" >
+    <form class="form-group" >
+    <nb-card>
+   
+    <nb-card-body>
+          
+        <div   class="row full-name-inputs">
+            <div class="input-group col-md-3   input-group-lg">
+              <label class="label" for="Formation">Formation</label>
+            </div>
+            <div    class="input-group col-md-6   input-group-sm">
+              <ng-select  placeholder="Choisissez la formation" disabled
+              bindLabel="intituleFormation" 
+              [items]=listeFormation
+              bindValue="id"
+              [(ngModel)]="selectedFormation"
+              name="Formation"
+              >
+             </ng-select> 
+            </div>
+        </div>
+
+        <div   class="row full-name-inputs">
+            <div class="input-group col-md-3   input-group-lg">
+              <label class="label" for="Demandeur">Demandeur</label>
+            </div>
+            <div    class="input-group col-md-6   input-group-sm">
+              <ng-select  placeholder="Choisissez le Demandeur" disabled
+              bindLabel="nom" 
+              [items]=listeDemandeur
+              bindValue="id"
+              [(ngModel)]="selectedDemandeur"
+              name="Demandeur"
+              >
+             </ng-select> 
+            </div>
+        </div>
+
+
+
+        
+        <div   class="row full-name-inputs">
+          <div class="input-group col-md-3   input-group-lg">
+            <label class="label" for="Client">Client</label>
+          </div>
+          <div    class="input-group col-md-6   input-group-sm">
+            <ng-select  placeholder="Choisissez le client" disabled
+            bindLabel="nomClient" 
+            [items]=listeClient
+            bindValue="id"
+            [(ngModel)]="selectedClient"
+            name="Client"
+            >
+           </ng-select> 
+          </div>
+      </div>
+
+        <div   class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="date">Date</label>
+          </div>
+          <div    class="input-group col-md-6   input-group-sm">
+              <input nbInput 
+              disabled
+              class="form-control"
+              placeholder="Date"
+              [(ngModel)]="demande.date"
+              [nbDatepicker]="formpicker1"
+              name="date"
+              >
+       <nb-datepicker #formpicker1></nb-datepicker>
+          </div>
+         </div> 
+
+
+         <div   class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="date1">Date prévue</label>
+          </div>
+          <div    class="input-group col-md-6   input-group-sm">
+              <input nbInput 
+              disabled
+              class="form-control"
+              placeholder="Date prévue"
+              [(ngModel)]="demande.dateDebPrevue"
+              [nbDatepicker]="formpicker"
+              name="date1"
+              >
+       <nb-datepicker #formpicker></nb-datepicker>
+          </div>
+         </div> 
+
+         <div   class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="typedemande">Type demande</label>
+          </div>
+          <div    class="input-group col-md-6   input-group-sm">
+            <input  type="text" class="form-control" nbInput disabled [(ngModel)]="demande.type"  placeholder="type Demande"   name="typedemande"  />
+          </div>
+         </div> 
+
+         <div   class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="etatdemande">Etat demande</label>
+          </div>
+          <div    class="input-group col-md-6   input-group-sm">
+            <input  type="text" class="form-control" nbInput disabled [(ngModel)]="demande.etat"  placeholder="etat Demande"   name="etatdemande"  />
+          </div>
+         </div> 
+
+         <div   class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="prixdemande">Prix demande</label>
+          </div>
+          <div    class="input-group col-md-6   input-group-sm">
+            <input  type="number" class="form-control" nbInput disabled [(ngModel)]="demande.prix"  placeholder="prix Demande"   name="prixdemande"  />
+          </div>
+         </div>
+
+         
+         <div   class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="lieudemande">Lieu prévue demande</label>
+          </div>
+          <div    class="input-group col-md-6   input-group-sm">
+            <input  type="text" class="form-control" nbInput disabled [(ngModel)]="demande.lieuPrevue"  placeholder="lieu Demande"   name="lieudemande"  />
+          </div>
+         </div>
+
+         <div   class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="dureePrevuedemande">duree prévue demande</label>
+          </div>
+          <div    class="input-group col-md-6   input-group-sm">
+            <input  type="number" class="form-control" nbInput disabled [(ngModel)]="demande.dureePrevue"  placeholder="duree Prévue Demande"   name="dureePrevuedemande"  />
+          </div>
+         </div>
+
+         <div   class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="horairePrevudemande">horaire prévue demande</label>
+          </div>
+          <div    class="input-group col-md-6   input-group-sm">
+            <input  type="text" class="form-control" nbInput disabled [(ngModel)]="demande.horairePrevu"  placeholder="horaire prévue Demande"   name="horairePrevudemande"  />
+          </div>
+         </div>
+
+         <div   class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-lg">
+            <label for="modedemande">mode demande</label>
+          </div>
+          <div    class="input-group col-md-6   input-group-sm">
+            <input  type="text" class="form-control" nbInput disabled [(ngModel)]="demande.mode"  placeholder="mode Demande"   name="modedemande"  />
+          </div>
+         </div>
+
+
+
+
+
+
+  
+  
+      
+      
+  
+  
+    </nb-card-body>
+    </nb-card>
+    <div style="text-align:right;">
+      <button nbButton status="warning" (click)="fermer();" style="margin-left: 30px;">Return</button>
+    </div>
+  </form>
+    </div>

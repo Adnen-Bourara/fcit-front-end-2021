@@ -1,0 +1,159 @@
+<div class="col-md-12  " style="width:950px; height: 325px" >
+    <form class="form-group"  #form="ngForm" (ngSubmit)="onAddClient()"  #monFormulairej = ngForm autocomplete="off"   >
+    <nb-card>
+   
+    <nb-card-body>
+
+        <div   class="row full-name-inputs label nvForm">
+            <div class="input-group col-md-3   input-group-lg">
+              <label for="Nomclient">Nom clinet</label>
+            </div>
+            <div    class="input-group col-md-6   input-group-sm">
+              <input  type="text" class="form-control" nbInput required [(ngModel)]="client.nomClient" maxlength="20"   placeholder="Nom Client"  #Nomclient="ngModel" pattern="^[a-zA-Z _-]{3,20}$"  name="Nomclient"  />
+            </div>
+            <ng-container *ngIf="Nomclient.invalid && Nomclient.touched">
+              <p style="top: 7px; position: relative;"  class="caption status-danger" *ngIf="Nomclient.errors?.required">
+                Vous devez indiquer le nom
+              </p>
+              <p style="top: 7px; position: relative;"  class="caption status-danger" *ngIf="Nomclient.errors?.pattern">
+                Le nom n'est pas valide
+              </p>
+            </ng-container>
+            <ng-container *ngIf="!Nomclient.invalid && Nomclient.touched">
+              <p style="top: 7px; position: relative;" class="caption status-success" *ngIf="!Nomclient.errors?.pattern" >
+                ✔
+              </p>
+            </ng-container>
+           </div> 
+
+
+
+
+           <div   class="row full-name-inputs label nvForm">
+            <div class="input-group col-md-3   input-group-lg">
+              <label for="typedemande">Type Client</label>
+            </div>
+            <div    class="input-group col-md-6   input-group-sm">
+              <ng-select   required [(ngModel)]="client.typeClient"  placeholder="type Client" #typeclient="ngModel"  name="typeclient" >
+                <ng-option [value]="'Personne'" >Personne</ng-option>
+                <ng-option [value]="'Société'">Société</ng-option>
+            </ng-select>
+            </div>
+           </div> 
+
+
+
+           
+           <div  *ngIf="client.typeClient == 'Société'" class="row full-name-inputs label nvForm">
+            <div class="input-group col-md-3   input-group-lg">
+              <label for="Matriculefiscale">Matricule fiscale</label>
+            </div>
+            <div    class="input-group col-md-6   input-group-sm">
+              <input  type="text" class="form-control" nbInput required [(ngModel)]="client.matrFiscSoc"   placeholder="Matricule fiscale"  name="Matriculefiscale"  />
+            </div>
+           </div> 
+
+
+           <div  *ngIf="client.typeClient == 'Société'" class="row full-name-inputs label nvForm">
+            <div class="input-group col-md-3   input-group-lg">
+              <label for="responsable">Responsable</label>
+            </div>
+            <div    class="input-group col-md-6   input-group-sm">
+              <input  type="text" class="form-control" nbInput required [(ngModel)]="client.responsable"   placeholder="Responsable"  name="responsable"  />
+            </div>
+           </div>
+           
+           
+           <div *ngIf="client.typeClient == 'Personne'"  class="row full-name-inputs label nvForm">
+            <div class="input-group col-md-3   input-group-lg">
+              <label for="cin">CIN</label>
+            </div>
+            <div    class="input-group col-md-6   input-group-sm">
+              <input  type="text" class="form-control" nbInput required  [(ngModel)]="client.cinPersonne"  placeholder="CIN"   name="cin"  />
+            </div>
+           </div> 
+
+
+
+           <div   class="row full-name-inputs label nvForm">
+            <div class="input-group col-md-3   input-group-lg">
+              <label for="Email">Email</label>
+            </div>
+            <div    class="input-group col-md-6   input-group-sm">
+              <input  type="text" class="form-control" nbInput required [(ngModel)]="client.email" #Emailclient="ngModel" maxlength="25" placeholder="Email" pattern=".+@.+\..+"   name="Email"  />
+            </div>
+            <ng-container *ngIf="Emailclient.invalid && Emailclient.touched">
+              <p style="top: 7px; position: relative;"  class="caption status-danger" *ngIf="Emailclient.errors?.required">
+                Vous devez indiquer l'adresse e-mail
+              </p>
+              <p style="top: 7px; position: relative;"  class="caption status-danger" *ngIf="Emailclient.errors?.pattern">
+                L'adresse e-mail n'est pas valide
+              </p>
+            </ng-container>
+            <ng-container *ngIf="!Emailclient.invalid && Emailclient.touched">
+              <p style="top: 7px; position: relative;" class="caption status-success" *ngIf="!Emailclient.errors?.pattern" >
+                ✔
+              </p>
+            </ng-container>
+           </div>  
+
+
+
+
+           <div   class="row full-name-inputs label nvForm">
+            <div class="input-group col-md-3   input-group-lg">
+              <label for="telclient">Téléphone</label>
+            </div>
+            <div    class="input-group col-md-6   input-group-sm">
+              <input  type="tel" class="form-control" nbInput required [(ngModel)]="client.telClient" maxlength="20" placeholder="Téléphone"  pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{3})(( x| ext)\d{1,5}){0,1}$"  #telclient="ngModel"  name="telclient"  />
+            </div>
+            <ng-container *ngIf="telclient.invalid && telclient.touched">
+              <p style="top: 7px; position: relative;"  class="caption status-danger" *ngIf="telclient.errors?.required">
+                Vous devez indiquer le Téléphone
+              </p>
+              <p style="top: 7px; position: relative;"  class="caption status-danger" *ngIf="telclient.errors?.pattern">
+                Téléphone n'est pas valide
+              </p>
+            </ng-container>
+            <ng-container *ngIf="!telclient.invalid && telclient.touched">
+              <p style="top: 7px; position: relative;" class="caption status-success" *ngIf="!telclient.errors?.pattern" >
+                ✔
+              </p>
+            </ng-container>
+           </div> 
+
+
+           <div   class="row full-name-inputs label nvForm">
+            <div class="input-group col-md-3   input-group-lg">
+              <label for="adrclient">Adresse</label>
+            </div>
+            <div    class="input-group col-md-6   input-group-sm">
+              <input  type="text" class="form-control" nbInput  [(ngModel)]="client.adrClient"  placeholder="Adresse"   name="adrclient"  />
+            </div>
+           </div> 
+
+
+           <div   class="row full-name-inputs label nvForm">
+            <div class="input-group col-md-3   input-group-lg">
+              <label for="pays">Pays</label>
+            </div>
+            <div    class="input-group col-md-6   input-group-sm">
+              <input  type="text" class="form-control" nbInput  [(ngModel)]="client.pays"  placeholder="Pays"   name="pays"  />
+            </div>
+           </div>
+          
+  
+      
+ 
+      
+      
+  
+  
+    </nb-card-body>
+    </nb-card>
+    <div style="text-align:right;">
+      <button nbButton status="success" type="submit" [disabled]=!monFormulairej.valid>{{A}}</button>
+      <button nbButton status="warning" (click)="fermer();" style="margin-left: 30px;">Return</button>
+    </div>
+  </form>
+    </div>

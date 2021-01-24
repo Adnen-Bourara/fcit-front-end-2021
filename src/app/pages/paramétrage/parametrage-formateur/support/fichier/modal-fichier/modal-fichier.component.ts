@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NbToastrService, NbWindowRef } from '@nebular/theme';
 import { Router } from '@angular/router';
 import { Fichier } from '../fichier';
-import { FichierService } from '../fichier.service';
+import {FichierService} from "../fichier.service";
+
 
 @Component({
   selector: 'ngx-modal-fichier',
@@ -37,22 +38,19 @@ fileSelect:any;
 
 async onAddFichier() {
 
-    console.log(this.fichier);
+        console.log(this.fichier);
 
-      this.fichierService.uploadFile(this.file,this.fichier.nom).subscribe(data => {
+        this.fichierService.uploadFile(this.file,this.fichier.nom).subscribe(data => {
         this.fichier.url = data.fileDownloadUri;
-        this.fichierService.addFichier(this.fichier,this.idS);});
-
-
+        this.fichierService.addFichier(this.fichier,this.idS);
+        }
+        );
         localStorage.removeItem('e');
         localStorage.removeItem('id');
         this.windowRef.close();
         this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
-        {
-
-        this.router.navigate(['/pages/support/fichier']);
-        this.router.navigate(['/pages/support/fichier']);
-        });
+        this.router.navigate(['/pages/support/fichier'])
+        );
         this.toastrService.success("Succès","fichier Ajouté") ;
 
 

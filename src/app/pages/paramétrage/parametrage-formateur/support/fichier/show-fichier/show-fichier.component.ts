@@ -15,7 +15,7 @@ export class ShowFichierComponent implements OnInit {
   lienFichier:any;
   constructor( private fichierService:FichierService,
     private toastrService:NbToastrService,
-    private router : Router, 
+    private router : Router,
     public windowRef: NbWindowRef,) { }
 
  async  ngOnInit() {
@@ -31,6 +31,12 @@ this.lienFichier =this.fichier.url;
   {
     this.windowRef.close();
   }
+
+download()
+{
+
+  window.open(this.fichier.url, "_blank");
+}
 
 
 }

@@ -2,7 +2,7 @@
     <form class="form-group" >
     <nb-card>
     <nb-card-body>
-          
+
       <div   class="row full-name-inputs label nvForm">
           <div class="input-group col-md-3   input-group-lg">
             <label for="Nomfichier">Nom Fichier</label>
@@ -10,7 +10,7 @@
           <div    class="input-group col-md-6   input-group-sm">
             <input  type="text" class="form-control" nbInput disabled [(ngModel)]="fichier.nom"  placeholder="Nom Fichier"   name="Nomfichier"  />
           </div>
-        </div> 
+        </div>
 
         <div   class="row full-name-inputs label nvForm">
             <div class="input-group col-md-3   input-group-lg">
@@ -19,7 +19,7 @@
             <div    class="input-group col-md-6   input-group-sm">
               <input  type="text" class="form-control" nbInput disabled [(ngModel)]="fichier.type"  placeholder="type Fichier"   name="typefichier"  />
             </div>
-          </div> 
+          </div>
 
           <div   class="row full-name-inputs label nvForm">
             <div class="input-group col-md-3   input-group-lg">
@@ -28,17 +28,7 @@
             <div    class="input-group col-md-6   input-group-sm">
               <input  type="string" class="form-control" nbInput disabled [(ngModel)]="fichier.taille"  placeholder="taille Fichier"   name="taillefichier"  />
             </div>
-          </div> 
-
-          <div   class="row full-name-inputs label nvForm">
-            <div class="input-group col-md-3   input-group-lg">
-              <label for="urlfichier">URL Fichier</label>
-            </div>
-            <div    class="input-group col-md-6   input-group-sm">
-           <input  type="text" class="form-control" nbInput disabled [(ngModel)]="fichier.url"  placeholder="url Fichier"   name="urlfichier"  />
           </div>
-          </div> 
-
 
           <div   class="row full-name-inputs label nvForm">
             <div class="input-group col-md-3   input-group-lg">
@@ -47,13 +37,16 @@
             <div    class="input-group col-md-6   input-group-sm">
               <input  type="text" class="form-control" nbInput disabled [(ngModel)]="fichier.nature"  placeholder="nature Fichier"   name="naturefichier"  />
             </div>
-          </div> 
-  
-       
+          </div>
+
+      <div style="text-align:right;">
+        <button nbButton status="info" (click)="download()" >Download</button>
+      </div>
+
     </nb-card-body>
     </nb-card>
     <div style="text-align:right;">
-      <button nbButton status="warning" (click)="fermer();" style="margin-left: 30px;margin-bottom: 12px;">Return</button>
+      <button nbButton status="warning" (click)="fermer()" style="margin-left: 30px;margin-bottom: 12px;">Return</button>
     </div>
   </form>
     </div>

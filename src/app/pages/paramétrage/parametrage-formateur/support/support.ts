@@ -1,5 +1,5 @@
 export class Support {
     id:number;
-    titre:String;
-    date:Date;
+    titre: string;
+    date: Date;
 }

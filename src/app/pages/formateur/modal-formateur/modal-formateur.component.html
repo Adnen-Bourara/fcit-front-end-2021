@@ -1,5 +1,5 @@
 <div class="col-md-12  " style="width:950px; height: 450px">
-  <form class="form-group" #form="ngForm" (ngSubmit)="onAddFormateur()" #monFormulairej=ngForm autocomplete="off">
+  <form class="form-group" #form="ngForm" #monFormulairej=ngForm autocomplete="off">
     <nb-card>
 
       <nb-card-body>
@@ -85,10 +85,10 @@
             <label for="photoformateur" style="margin-top: 2rem;">Photo formateur</label>
           </div>
           <div style="margin-top: 2rem;" class="input-group col-md-6   input-group-sm">
-            <input style=" height: 1.4rem; width: 5rem;" (change)="getFileDetailsPhoto($event)" type="file" nbInput
+            <input style=" height: 1.4rem; width: 5rem;"  [disabled]="!emailComfirmed" (change)="getFileDetailsPhoto($event)" type="file" nbInput
               accept="image/png, image/jpeg" name="photoformateur" />
-            <input type="text" class="form-control" nbInput disabled [(ngModel)]="formateur.photo"
-              placeholder="Photo Formateur" name="photoformateur" />
+            <input  type="text" class="form-control" nbInput disabled
+              placeholder="Photo Formateur" name="photoformateur" value="{{formateur.prenom}} {{formateur.nom}} photo" />
           </div>
           <div class="col" style="    height: 7rem;">
             <img [src]="sourceImage" style=" width: auto;
@@ -96,8 +96,7 @@
           max-width: 100%;
           max-height: 100%;">
           </div>
-          <p style=" color:red;    margin-top: -2rem;
-          padding-left: 0.9rem;">Image MUST be inside this directory "src\assets\images"</p>
+
         </div>
 
         <div class="row full-name-inputs label nvForm">
@@ -105,22 +104,29 @@
             <label for="CVformateur">CV formateur</label>
           </div>
           <div class="input-group col-md-6   input-group-sm">
-            <input style="    height: 1.4rem; width: 5rem;" (change)="getFileDetails($event)" type="file" nbInput
+            <input [disabled]="!emailComfirmed" style="    height: 1.4rem; width: 5rem;" (change)="getFileDetails($event)" type="file" nbInput
               name="CVformateur" />
-            <input type="text" class="form-control" nbInput disabled [(ngModel)]="formateur.cv"
-              placeholder="CV Formateur" name="CVformateur" />
+            <input type="text" class="form-control" nbInput disabled
+              placeholder="CV Formateur" name="CVformateur" value="{{formateur.prenom}} {{formateur.nom}} cv" />
           </div>
-          <p style=" color:red;padding-left: 0.9rem;">CV file MUST be inside this directory "src\assets\CV"</p>
+
         </div>
+        <p style="padding: 10px" class="caption status-danger"
+           *ngIf="!emailComfirmed">
+          Vous devez indiquer l'adresse e-mail pour l'ajout de cv et photo
+        </p>
 
         <div class="row full-name-inputs label nvForm">
           <div class="input-group col-md-3   input-group-lg">
             <label for="emailformateur">Email formateur</label>
           </div>
           <div class="input-group col-md-6   input-group-sm">
-            <input type="text" class="form-control" nbInput required [(ngModel)]="formateur.email"
+            <input [disabled]="emailComfirmed"  type="text" class="form-control" nbInput required [(ngModel)]="formateur.email"
               placeholder="Email Formateur" name="emailformateur" #emailformateur="ngModel" maxlength="25"
               pattern=".+@.+\..+" />
+            <div style="text-align:right;padding-left: 14px;">
+              <button nbButton status="info" [disabled]="emailformateur.invalid" (click)="confirmEmail()" >Confirmer email</button>
+            </div>
           </div>
           <ng-container *ngIf="emailformateur.invalid && emailformateur.touched">
             <p style="top: 7px; position: relative;" class="caption status-danger"
@@ -340,7 +346,7 @@
       </nb-card-body>
     </nb-card>
     <div style="text-align:right;">
-      <button nbButton status="success" type="submit" [disabled]=!monFormulairej.valid>{{A}}</button>
+      <button nbButton status="success" type="submit" [disabled]=!monFormulairej.valid (click)="onAddFormateur()" >{{A}}</button>
       <button nbButton status="warning" (click)="fermer();" style="margin-left: 30px;">Return</button>
     </div>
   </form>

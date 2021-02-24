@@ -4,7 +4,7 @@ import { PagesComponent } from '../../../../pages.component';
 import { Fichier } from './fichier';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FichierService {
 
@@ -12,7 +12,7 @@ export class FichierService {
   url1 = PagesComponent.urlConfig + 'fichier';
   constructor(protected httpclient: HttpClient) { }
 
-  async getFichierById(id:number)
+  async getFichierById(id: number)
   {
     return this.httpclient.get<Fichier>(this.url1 + '/' + id).toPromise();
   }
@@ -29,17 +29,17 @@ export class FichierService {
 
   async addFichier(fichier: Fichier , id: number)
   {
-    return this.httpclient.post(this.url + '/'+ id + '/fichier', fichier).toPromise();
+    return this.httpclient.post(this.url + '/' + id + '/fichier', fichier).toPromise();
   }
 
-  async deleteFichier(id:number)
+  async deleteFichier(id: number)
   {
-    return this.httpclient.delete(this.url1+'/'+id).toPromise();
+    return this.httpclient.delete(this.url1 + '/' + id).toPromise();
   }
 
   async editFichier(fichier: Fichier)
   {
-    return this.httpclient.put(this.url1+'/'+fichier.id,fichier).toPromise();
+    return this.httpclient.put(this.url1 + '/' + fichier.id, fichier).toPromise();
   }
 
   uploadFile(file: File , fileName: string)

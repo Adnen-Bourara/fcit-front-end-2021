@@ -2,7 +2,7 @@
 
   <nb-card>
   <nb-card-body>
-        
+
     <div   class="row full-name-inputs label nvForm">
         <div class="input-group col-md-3   input-group-lg">
           <label for="Nomformateur">Nom formateur</label>
@@ -10,7 +10,7 @@
         <div    class="input-group col-md-6   input-group-sm">
           <input  type="text" class="form-control" nbInput  [(ngModel)]="formateur.nom" disabled placeholder="Nom Formateur"   name="Nomformateur"  />
         </div>
-       </div> 
+       </div>
 
        <div   class="row full-name-inputs label nvForm">
         <div class="input-group col-md-3   input-group-lg">
@@ -19,7 +19,7 @@
         <div    class="input-group col-md-6   input-group-sm">
           <input  type="text" class="form-control" nbInput  [(ngModel)]="formateur.prenom" disabled placeholder="Prenom Formateur"   name="Prenomformateur"  />
         </div>
-       </div> 
+       </div>
 
        <div   class="row full-name-inputs label nvForm">
         <div class="input-group col-md-3   input-group-lg">
@@ -28,7 +28,7 @@
         <div    class="input-group col-md-6   input-group-sm">
           <input  type="text" class="form-control" nbInput  [(ngModel)]="formateur.classe" disabled placeholder="Classe Formateur"   name="classeformateur"  />
         </div>
-       </div> 
+       </div>
 
        <div   class="row full-name-inputs label nvForm">
         <div class="input-group col-md-3   input-group-lg">
@@ -37,31 +37,28 @@
         <div    class="input-group col-md-6   input-group-sm">
           <input  type="text" class="form-control" nbInput  [(ngModel)]="formateur.fonction" disabled placeholder="Fonction Formateur"   name="fonctionformateur"  />
         </div>
-       </div> 
+       </div>
        <div   class="row full-name-inputs label nvForm">
         <div class="input-group col-md-3   input-group-lg">
           <label for="photoformateur" style="margin-top: 2rem;">Photo formateur</label>
         </div>
-        <div   style="margin-top: 2rem;"  class="input-group col-md-6   input-group-sm">
-          <input style="height: 2.4rem;" disabled type="text" class="form-control" nbInput  [(ngModel)]="formateur.photo"  placeholder="Photo Formateur"   name="photoformateur"  />
-        </div>
-        <div class="col" style="    height: 7rem;"> 
-          <img [src]="sourceImage" 
+        <div class="col" style="    height: 7rem;">
+          <img [src]="sourceImage"
           style=" width: auto;
           height: auto;
           max-width: 100%;
           max-height: 100%;">
           </div>
-       </div> 
+       </div>
 
     <div   class="row full-name-inputs label nvForm">
         <div class="input-group col-md-3   input-group-lg">
           <label for="CVformateur">CV formateur</label>
         </div>
-        <div    class="input-group col-md-6   input-group-sm">
-            <input style="height: 2.4rem;" type="text" class="form-control" nbInput  [(ngModel)]="formateur.cv" disabled  placeholder="CV Formateur"   name="CVformateur"  />
-          </div>
-       </div> 
+      <div style="text-align:right;padding-left: 14px;">
+        <button nbButton status="info" [disabled]="formateur.cv == 'none'" (click)="download()" >Download</button>
+      </div>
+       </div>
 
        <div   class="row full-name-inputs label nvForm">
         <div class="input-group col-md-3   input-group-lg">
@@ -70,7 +67,7 @@
         <div    class="input-group col-md-6   input-group-sm">
           <input  type="text" class="form-control" nbInput  [(ngModel)]="formateur.email" disabled  placeholder="Email Formateur"   name="emailformateur"  />
         </div>
-       </div> 
+       </div>
 
        <div   class="row full-name-inputs label nvForm">
         <div class="input-group col-md-3   input-group-lg">
@@ -79,7 +76,7 @@
         <div    class="input-group col-md-6   input-group-sm">
           <input  type="text" class="form-control" nbInput  [(ngModel)]="formateur.tel" disabled placeholder="Tel Formateur"   name="telformateur"  />
         </div>
-       </div> 
+       </div>
 
        <div   class="row full-name-inputs label nvForm">
         <div class="input-group col-md-3   input-group-lg">
@@ -88,7 +85,7 @@
         <div    class="input-group col-md-6   input-group-sm">
           <input  type="text" class="form-control" nbInput  [(ngModel)]="formateur.nss" disabled placeholder="Nss Formateur"   name="nssformateur"  />
         </div>
-       </div> 
+       </div>
 
        <div   class="row full-name-inputs label nvForm">
         <div class="input-group col-md-3   input-group-lg">
@@ -97,7 +94,7 @@
         <div    class="input-group col-md-6   input-group-sm">
           <input  type="text" class="form-control" nbInput  [(ngModel)]="formateur.salaire" disabled  placeholder="Salaire Formateur"   name="salaireformateur"  />
         </div>
-       </div> 
+       </div>
 
        <div   class="row full-name-inputs label nvForm">
         <div class="input-group col-md-3   input-group-lg">
@@ -106,14 +103,14 @@
         <div    class="input-group col-md-6   input-group-sm">
           <input  type="text" class="form-control" nbInput  [(ngModel)]="formateur.adr" disabled  placeholder="Adresse Formateur"   name="adrformateur"  />
         </div>
-       </div> 
+       </div>
 
        <div   class="row full-name-inputs label nvForm">
         <div class="input-group col-md-3   input-group-lg">
           <label for="dateAjout">Date Ajout</label>
         </div>
         <div    class="input-group col-md-6   input-group-sm">
-            <input nbInput 
+            <input nbInput
             class="form-control"
             placeholder="Date d'ajout "
             [(ngModel)]="formateur.dateAjout"
@@ -123,7 +120,7 @@
             >
      <nb-datepicker #formpicker1></nb-datepicker>
         </div>
-       </div> 
+       </div>
 
        <div   class="row full-name-inputs label nvForm">
         <div class="input-group col-md-3   input-group-lg">
@@ -132,7 +129,7 @@
         <div    class="input-group col-md-6   input-group-sm">
           <input  type="text" class="form-control" nbInput  [(ngModel)]="formateur.cin" disabled  placeholder="CIN Formateur"   name="cinformateur"  />
         </div>
-       </div> 
+       </div>
 
        <div   class="row full-name-inputs label nvForm">
         <div class="input-group col-md-3   input-group-lg">
@@ -141,7 +138,7 @@
         <div    class="input-group col-md-6   input-group-sm">
           <input  type="text" class="form-control" nbInput  [(ngModel)]="formateur.copieCin"  disabled placeholder="CIN Formateur"   name="copiecinformateur"  />
         </div>
-       </div>  
+       </div>
 
        <div   class="row full-name-inputs label nvForm">
         <div class="input-group col-md-3   input-group-lg">
@@ -150,7 +147,7 @@
         <div    class="input-group col-md-6   input-group-sm">
           <input  type="text" class="form-control" nbInput  [(ngModel)]="formateur.passport" disabled  placeholder="Passport Formateur"   name="passportformateur"  />
         </div>
-       </div> 
+       </div>
 
        <div   class="row full-name-inputs label nvForm">
         <div class="input-group col-md-3   input-group-lg">
@@ -159,7 +156,7 @@
         <div    class="input-group col-md-6   input-group-sm">
           <input  type="text" class="form-control" nbInput  [(ngModel)]="formateur.copiePassport" disabled  placeholder="Passport Formateur"   name="copiePassportformateur"  />
         </div>
-       </div> 
+       </div>
 
        <div   class="row full-name-inputs label nvForm">
         <div class="input-group col-md-3   input-group-lg">
@@ -168,7 +165,7 @@
         <div    class="input-group col-md-6   input-group-sm">
           <input  type="text" class="form-control" nbInput  [(ngModel)]="formateur.visa" disabled  placeholder="Visa Formateur"  name="visaformateur"  />
         </div>
-       </div> 
+       </div>
 
        <div   class="row full-name-inputs label nvForm">
         <div class="input-group col-md-3   input-group-lg">
@@ -176,16 +173,16 @@
         </div>
         <div    class="input-group col-md-6   input-group-sm">
             <input nbInput class="form-control"
-            required 
+            required
             placeholder="Validité Visa Formateur"
             [nbDatepicker]="formpicker2"
             [(ngModel)]="formateur.valVisa"
-            name="valVisaformateur" 
+            name="valVisaformateur"
             disabled
             >
      <nb-datepicker #formpicker2></nb-datepicker>
         </div>
-       </div> 
+       </div>
 
        <div   class="row full-name-inputs label nvForm">
         <div class="input-group col-md-3   input-group-lg">
@@ -194,7 +191,7 @@
         <div    class="input-group col-md-6   input-group-sm">
           <input  type="text" class="form-control" nbInput  [(ngModel)]="formateur.tarif" disabled  placeholder="Tarif Formateur"   name="tarifformateur"  />
         </div>
-       </div> 
+       </div>
 
        <div   class="row full-name-inputs label nvForm">
         <div class="input-group col-md-3   input-group-lg">
@@ -203,7 +200,7 @@
         <div    class="input-group col-md-6   input-group-sm">
           <input  type="text" class="form-control" nbInput  [(ngModel)]="formateur.rib" disabled  placeholder="RIB Formateur"   name="ribformateur"  />
         </div>
-       </div> 
+       </div>
 
        <div   class="row full-name-inputs label nvForm">
         <div class="input-group col-md-3   input-group-lg">
@@ -212,10 +209,10 @@
         <div    class="input-group col-md-6   input-group-sm">
           <input  type="text" class="form-control" nbInput  [(ngModel)]="formateur.copieRib" disabled  placeholder="RIB Formateur"   name="copieRibformateur"  />
         </div>
-       </div> 
+       </div>
 
-    
-    
+
+
 
 
   </nb-card-body>

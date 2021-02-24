@@ -2,20 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { NbToastrService, NbWindowRef } from '@nebular/theme';
 import { Router } from '@angular/router';
 import { Fichier } from '../fichier';
-import {FichierService} from "../fichier.service";
+import {FichierService} from '../fichier.service';
+import {ResponseFile} from './response-file';
 
 
 @Component({
   selector: 'ngx-modal-fichier',
   templateUrl: './modal-fichier.component.html',
-  styleUrls: ['./modal-fichier.component.scss']
+  styleUrls: ['./modal-fichier.component.scss'],
 })
 export class ModalFichierComponent implements OnInit {
-fichier:Fichier;
+fichier: Fichier;
 file: File;
 A:any;
 idS:any;
-fileSelect:any;
+res : any = new ResponseFile();
   constructor(
     private fichierService:FichierService,
     private toastrService:NbToastrService,
@@ -41,7 +42,8 @@ async onAddFichier() {
         console.log(this.fichier);
 
         this.fichierService.uploadFile(this.file,this.fichier.nom).subscribe(data => {
-        this.fichier.url = data.fileDownloadUri;
+         this.res = data;
+        this.fichier.url = this.res.fileDownloadUri;
         this.fichierService.addFichier(this.fichier,this.idS);
         }
         );
@@ -51,7 +53,7 @@ async onAddFichier() {
         this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
         this.router.navigate(['/pages/support/fichier'])
         );
-        this.toastrService.success("Succès","fichier Ajouté") ;
+        this.toastrService.success('Succès','fichier Ajouté') ;
 
 
 

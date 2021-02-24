@@ -20,13 +20,13 @@ export class ModalActualiteComponent implements OnInit {
   actualite : Actualite
   res:any;
   source : any
-  A : string 
+  A : string
   public imagePath;
   imgURL: any;
 
 
   constructor(private serviceactualite :ActualiteServiceService,
-    private router : Router , 
+    private router : Router ,
     public windowRef: NbWindowRef,
     private toastrService:NbToastrService, ) { }
 
@@ -35,7 +35,7 @@ export class ModalActualiteComponent implements OnInit {
     this.actualite = new Actualite();
     if (e === '0' ) {
       this.A = 'Ajouter';
-      this.retrievedImage = "http://localhost:8080/images/actualite None.gif";
+      this.retrievedImage = "http://localhost:9099/downloadFile/actualite None.gif";
     }
     if (e === '1') {
       this.A = 'Modifier';
@@ -50,7 +50,7 @@ export class ModalActualiteComponent implements OnInit {
 
 
     let e = localStorage.getItem('e');
-      if (e === '0') 
+      if (e === '0')
       { this.actualite = await this.serviceactualite.AddActualite(this.actualite)
         this.onUpload(this.actualite.id);
         localStorage.removeItem('e');
@@ -59,10 +59,10 @@ export class ModalActualiteComponent implements OnInit {
         this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
         this.router.navigate(['/pages/actualite']));
         this.toastrService.success("Succès","Actualité Ajoutée")
-            
+
       }
       if( e === '1')
-      { 
+      {
         console.log(this.actualite);
         await this.serviceactualite.EditActualite(this.actualite);
         if( this.retrievedImage!=null)
@@ -83,7 +83,7 @@ export class ModalActualiteComponent implements OnInit {
 
 
 
-  fermer()  
+  fermer()
      {
       this.windowRef.close();
      }
@@ -95,29 +95,29 @@ export class ModalActualiteComponent implements OnInit {
     //Select File
     this.selectedFile = event.target.files[0];
     var reader = new FileReader();
-    reader.readAsDataURL(this.selectedFile); 
-    reader.onload = (_event) => { 
-      this.retrievedImage = reader.result; 
+    reader.readAsDataURL(this.selectedFile);
+    reader.onload = (_event) => {
+      this.retrievedImage = reader.result;
       this.retrievedImageName = event.target.files[0].name;
     }
   }
 
-  
- 
-  
- 
-  
-  
+
+
+
+
+
+
 
 
   async onUpload(id:number) {
     console.log(this.selectedFile);
-  
+
     //FormData API provides methods and properties to allow us easily prepare form data to be sent with POST HTTP requests.
     const uploadImageData = new FormData();
-    uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name); 
+    uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
   await this.serviceactualite.uploadimage(id,uploadImageData);
-   
+
 }
 
 async getImage(id:number)
